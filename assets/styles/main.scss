@@ -1,0 +1,8 @@
+$main-wrapper-offset:               0 20%;
+$main-header-background-color:      #1B0E1B;
+
+.custom-container {
+  &__wrapper {
+    margin: $main-wrapper-offset;
+  }
+}
