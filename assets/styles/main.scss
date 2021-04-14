@@ -5,4 +5,8 @@ $main-header-background-color:      #1B0E1B;
   &__wrapper {
     margin: $main-wrapper-offset;
   }
+
+  &__header {
+    background-color: map-get($theme-colors, "custom-dark");
+  }
 }

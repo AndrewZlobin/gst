@@ -1,2 +1,12 @@
 // the ~ allows you to reference things in node_modules
 @import "~bootstrap/scss/bootstrap";
+
+// Create your own map
+$custom-colors: (
+        "custom-dark": #1B0E1B
+);
+
+// Merge the maps
+$theme-colors: map-merge($theme-colors, $custom-colors);
+
+@import "./assets/styles/main";
