@@ -14,6 +14,10 @@ Encore
         from: './assets/icons',
         to: 'icons/[name].[ext]'
     })
+    .copyFiles({
+        from: './assets/fonts',
+        to: 'fonts/[name].[ext]'
+    })
     // public path used by the web server to access the output path
     .setPublicPath('/build')
     // only needed for CDN's or sub-directory deploy

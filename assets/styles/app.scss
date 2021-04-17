@@ -1,6 +1,6 @@
-// 0. Include functions first (so you can manipulate colors, SVGs, calc, etc)
+// Include functions first (so you can manipulate colors, SVGs, calc, etc)
 @import "~bootstrap/scss/functions";
-// 1. Rewrite variables
+// Rewrite variables
 
 $container-max-widths: (
         sm: 540px,
@@ -9,12 +9,55 @@ $container-max-widths: (
         xl: 1170px
 ) !default;
 
+// Change fonts
+
+@font-face {
+  font-family: 'Montserrat';
+  src: url('../fonts/montserrathairline.woff2') format('woff2'),
+  url('../fonts/montserrathairline.woff') format('woff'),
+  url('../fonts/montserrathairline.ttf')  format('truetype');
+  font-weight: 100;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Montserrat';
+  src: url('../fonts/montserratlight.woff2') format('woff2'),
+  url('../fonts/montserratlight.woff') format('woff'),
+  url('../fonts/montserratlight.ttf')  format('truetype');
+  font-weight: 300;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Montserrat';
+  src: url('../fonts/montserrat.woff2') format('woff2'),
+  url('../fonts/montserrat.woff') format('woff'),
+  url('../fonts/montserrat.ttf')  format('truetype');
+  font-weight: 400;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Montserrat';
+  src: url('../fonts/montserratbold.woff2') format('woff2'),
+  url('../fonts/montserratbold.woff') format('woff'),
+  url('../fonts/montserratbold.ttf')  format('truetype');
+  font-weight: 700;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Montserrat';
+  src: url('../fonts/montserratblack.woff2') format('woff2'),
+  url('../fonts/montserratblack.woff') format('woff'),
+  url('../fonts/montserratblack.ttf')  format('truetype');
+  font-weight: 900;
+  font-style: normal;
+}
+
 $font-family-sans-serif: "Montserrat";
 
-// 2. Include remainder of required Bootstrap stylesheets
+// Include remainder of required Bootstrap stylesheets
 @import "~bootstrap/scss/variables";
 @import "~bootstrap/scss/mixins";
-// 3. Modify
+// Modify variables
 
 // Custom colors map
 $custom-colors: (
@@ -23,9 +66,8 @@ $custom-colors: (
 
 // Merge the maps
 $theme-colors: map-merge($theme-colors, $custom-colors);
-$theme-colors: map-remove($theme-colors, "info", "light", "dark");
 
-// 4. Include any optional Bootstrap components as you like
+// Include optional Bootstrap components
 
 @import "~bootstrap/scss/root";
 @import "~bootstrap/scss/reboot";
