@@ -15,6 +15,7 @@
     </head>
     <body>
         {% block body %}
+            {{  include('components/_header_info.html.twig') }}
             {{  include('components/_navbar.html.twig') }}
             {% block content %}
             {% endblock %}

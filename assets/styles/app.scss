@@ -1,5 +1,16 @@
-// 1. Include functions first (so you can manipulate colors, SVGs, calc, etc)
+// 0. Include functions first (so you can manipulate colors, SVGs, calc, etc)
 @import "~bootstrap/scss/functions";
+// 1. Rewrite variables
+
+$container-max-widths: (
+        sm: 540px,
+        md: 720px,
+        lg: 960px,
+        xl: 1170px
+) !default;
+
+$font-family-sans-serif: "Montserrat";
+
 // 2. Include remainder of required Bootstrap stylesheets
 @import "~bootstrap/scss/variables";
 @import "~bootstrap/scss/mixins";

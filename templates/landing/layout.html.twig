@@ -1,6 +1,11 @@
 {% extends 'base.html.twig' %}
 {% block content %}
-    <h2 class="text-primary">
-        Landing page
-    </h2>
+    <div class="container-fluid">
+        <h2 class="text-primary">
+            {{ controller_name }}
+        </h2>
+    </div>
+{% endblock %}
+{% block footer %}
+    <p>Footer</p>
 {% endblock %}
