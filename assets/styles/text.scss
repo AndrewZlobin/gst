@@ -1,0 +1,17 @@
+$node-text-header-font-size:        12px;
+$node-text-header-line-height:      15px;
+
+$node-text-link-font-size:          18px;
+$node-text-link-line-height:        18px;
+
+.node-text {
+  &__header {
+    font-weight: $font-weight-normal;
+    font-size: $node-text-header-font-size;
+    line-height: $node-text-header-line-height;
+  }
+  &__link {
+    font-size: $node-text-link-font-size;
+    line-height: $node-text-link-line-height;
+  }
+}

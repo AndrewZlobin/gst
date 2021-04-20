@@ -1,0 +1,39 @@
+$node-banner-height:      1088px;
+
+.node-navbar {
+  &__banner {
+    background: url("/assets/img/landing_bg.png") no-repeat;
+    background-size: cover;
+    height: $node-banner-height;
+  }
+}
+
+.node-navbar {
+  &_with_banner {
+    display: grid;
+    grid-template-areas:
+            "menu menu"
+            "header ."
+            "caption .";
+    grid-template-columns: 0.3fr 0.7fr;
+    grid-template-rows: 0.35fr 0.1fr 0.1fr 0.1fr;
+
+    height: 100%;
+    align-items: flex-start;
+    padding: $spacer * 1.5 0;
+
+    &__menu {
+      grid-area: menu;
+    }
+
+    &__header {
+      grid-area: header;
+    }
+
+    &__caption {
+      grid-area: caption;
+    }
+
+    &__button {}
+  }
+}
