@@ -4,14 +4,17 @@
 namespace App\Service;
 
 use Symfony\Contracts\Translation\TranslatorInterface;
+use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 
 class NavbarGenerator
 {
     private TranslatorInterface $translator;
+    private UrlGeneratorInterface $router;
 
-    public function __construct(TranslatorInterface $translator)
+    public function __construct(TranslatorInterface $translator, UrlGeneratorInterface $router)
     {
         $this->translator = $translator;
+        $this->router = $router;
     }
 
     public function getNavbar(): array
@@ -25,11 +28,31 @@ class NavbarGenerator
     protected function getTranslatedNavbarLinks(): array
     {
         return [
-            $this->translator->trans('navbar.links.aboutus'),
-            $this->translator->trans('navbar.links.activities'),
-            $this->translator->trans('navbar.links.projects'),
-            $this->translator->trans('navbar.links.career'),
-            $this->translator->trans('navbar.links.contacts'),
+            [
+                'title' => $this->translator->trans('navbar.links.main'),
+                'href' => $this->router->generate('main'),
+                'renderinlogo' => true
+            ],
+            [
+                'title' => $this->translator->trans('navbar.links.aboutus'),
+                'href' => '#',
+            ],
+            [
+                'title' => $this->translator->trans('navbar.links.activities'),
+                'href' => '#',
+            ],
+            [
+                'title' => $this->translator->trans('navbar.links.projects'),
+                'href' => '#',
+            ],
+            [
+                'title' => $this->translator->trans('navbar.links.career'),
+                'href' => '#',
+            ],
+            [
+                'title' => $this->translator->trans('navbar.links.contacts'),
+                'href' => '#',
+            ],
         ];
     }
 
