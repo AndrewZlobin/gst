@@ -2,7 +2,7 @@
 
 namespace App\Controller;
 
-use App\Service\NavbarGenerator;
+use App\Service\NavbarWithBannerGenerator;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -10,13 +10,13 @@ use Symfony\Component\Routing\Annotation\Route;
 class LandingController extends AbstractController
 {
     /**
-     * @Route("/", name="landing")
+     * @Route("/", name="main")
      */
-    public function index(NavbarGenerator $navbarGenerator): Response
+    public function index(NavbarWithBannerGenerator $extendedNavbarGenerator): Response
     {
         return $this->render('landing/index.html.twig', [
             'controller_name' => 'LandingController',
-            'navbar' => $navbarGenerator->getNavbar()
+            'navbar' => $extendedNavbarGenerator->getNavbarWithBanner()
         ]);
     }
 }
