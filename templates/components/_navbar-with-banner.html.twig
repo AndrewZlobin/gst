@@ -1,0 +1,26 @@
+{% extends 'components/_wrapper.html.twig' %}
+{% set extracontainerclasses = 'node-navbar__banner' %}
+{% block wrappercontent %}
+    <div class="node-navbar_with_banner">
+        <nav class="node-navbar_with_banner__menu d-flex align-items-end">
+            {% for link in navbar.links %}
+                {% if link.renderinlogo is defined %}
+                    <a class="node-navbar_with_banner__logo mr-auto" href="{{ link.href }}">
+                        <img src="{{ absolute_url(asset('build/img/navbar_logo.svg')) }}" alt="{{ link.title }}">
+                    </a>
+                {% else %}
+                    <a class="node-navbar_with_banner__link node-text__link nav-link text-white" href="#">
+                        {{ link.title|upper }}
+                    </a>
+                {% endif %}
+            {% endfor %}
+        </nav>
+        <h1 class="node-navbar_with_banner__header m-0 text-white">
+            {{ navbar.banner.header }}
+        </h1>
+        <h3 class="node-navbar_with_banner__caption m-0 text-white">
+            {{ navbar.banner.caption }}
+        </h3>
+    </div>
+{% endblock %}
+{% dump navbar %}

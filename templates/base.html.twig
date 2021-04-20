@@ -16,7 +16,11 @@
     <body>
         {% block body %}
             {{  include('components/_header_info.html.twig') }}
-            {{  include('components/_navbar.html.twig') }}
+            {% if navbar.banner is defined %}
+                {{  include('components/_navbar-with-banner.html.twig') }}
+            {% else %}
+                {{  include('components/_navbar.html.twig') }}
+            {% endif %}
             {% block content %}
             {% endblock %}
             {% block footer %}

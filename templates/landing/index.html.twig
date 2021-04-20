@@ -1,3 +1,13 @@
 {% extends 'landing/layout.html.twig' %}
 
+{% block stylesheets %}
+    {{ parent() }}
+    {{ encore_entry_link_tags('landing') }}
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    {{ encore_entry_script_tags('landing') }}
+{% endblock %}
+
 {% block title %}Hello LandingController!{% endblock %}

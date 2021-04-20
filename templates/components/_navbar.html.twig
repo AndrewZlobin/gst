@@ -1,23 +1,19 @@
 {% extends 'components/_wrapper.html.twig' %}
+{% set extracontainerclasses = 'node-navbar__banner' %}
 {% block wrappercontent %}
-    <ul class="nav">
-        <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#">Active</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="#">Link</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="#">Link</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
-        </li>
+    <ul class="nav pt-3 align-items-end">
         {% for link in navbar.links %}
-            <li class="nav-item">
-                <a class="nav-link" href="#">{{ link }}</a>
-            </li>
+            {% if link.renderinlogo is defined %}
+                <a class="mr-auto" href="{{ link.href }}">
+                    <img src="{{ absolute_url(asset('build/img/navbar_logo.svg')) }}" alt="{{ link.title }}">
+                </a>
+            {% else %}
+                <li class="nav-item">
+                    <a class="nav-link node-text__link text-white" href="#">{{ link.title|upper }}</a>
+                </li>
+            {% endif %}
         {% endfor %}
     </ul>
+    {{ dump(navbar.banner.header) }}
 {% endblock %}
 {% dump navbar %}
