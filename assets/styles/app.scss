@@ -1,26 +1,13 @@
 // Include functions first (so you can manipulate colors, SVGs, calc, etc)
+
 @import "~bootstrap/scss/functions";
 // Rewrite variables
 
-// Spacing
-//
-// Control the default styling of most Bootstrap elements by modifying these
-// variables. Mostly focused on spacing.
-// You can add more entries to the $spacers map, should you need more variation.
-
-$spacer: 1rem !default;
-$spacers: () !default;
-$spacers: map-merge(
-                (
-                        0: 0,
-                        1: ($spacer * .25),
-                        2: ($spacer * .5),
-                        3: $spacer,
-                        4: ($spacer * 1.5),
-                        5: ($spacer * 3)
-                ),
-                $spacers
-);
+$font-weight-lighter:         300 !default;
+$font-weight-light:           500 !default;
+$font-weight-normal:          600 !default;
+$font-weight-bold:            700 !default;
+$font-weight-bolder:          bolder !default;
 
 $container-max-widths: (
         sm: 540px,
@@ -30,65 +17,89 @@ $container-max-widths: (
 ) !default;
 
 // Change fonts
-
 @font-face {
   font-family: 'Montserrat';
-  src: url('../fonts/montserrathairline.woff2') format('woff2'),
-  url('../fonts/montserrathairline.woff') format('woff'),
-  url('../fonts/montserrathairline.ttf')  format('truetype');
-  font-weight: 100;
+  src: url('../fonts/Montserrat-Black.ttf')  format('truetype');
+  font-weight: 900;
   font-style: normal;
 }
 @font-face {
   font-family: 'Montserrat';
-  src: url('../fonts/montserratlight.woff2') format('woff2'),
-  url('../fonts/montserratlight.woff') format('woff'),
-  url('../fonts/montserratlight.ttf')  format('truetype');
-  font-weight: 300;
+  src: url('../fonts/Montserrat-ExtraBold.ttf')  format('truetype');
+  font-weight: 800;
   font-style: normal;
 }
 @font-face {
   font-family: 'Montserrat';
-  src: url('../fonts/montserrat.woff2') format('woff2'),
-  url('../fonts/montserrat.woff') format('woff'),
-  url('../fonts/montserrat.ttf')  format('truetype');
-  font-weight: 400;
-  font-style: normal;
-}
-@font-face {
-  font-family: 'Montserrat';
-  src: url('../fonts/montserratbold.woff2') format('woff2'),
-  url('../fonts/montserratbold.woff') format('woff'),
-  url('../fonts/montserratbold.ttf')  format('truetype');
+  src: url('../fonts/Montserrat-Bold.ttf')  format('truetype');
   font-weight: 700;
   font-style: normal;
 }
 @font-face {
   font-family: 'Montserrat';
-  src: url('../fonts/montserratblack.woff2') format('woff2'),
-  url('../fonts/montserratblack.woff') format('woff'),
-  url('../fonts/montserratblack.ttf')  format('truetype');
-  font-weight: 900;
+  src: url('../fonts/Montserrat-SemiBold.ttf')  format('truetype');
+  font-weight: 600;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Montserrat';
+  src: url('../fonts/Montserrat-Medium.ttf')  format('truetype');
+  font-weight: 500;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Montserrat';
+  src: url('../fonts/Montserrat-Regular.ttf')  format('truetype');
+  font-weight: 400;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Montserrat';
+  src: url('../fonts/Montserrat-Light.ttf')  format('truetype');
+  font-weight: 300;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Montserrat';
+  src: url('../fonts/Montserrat-ExtraLight.ttf')  format('truetype');
+  font-weight: 200;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Montserrat';
+  src: url('../fonts/Montserrat-Thin.ttf')  format('truetype');
+  font-weight: 100;
   font-style: normal;
 }
 
-$font-family-sans-serif: "Montserrat";
+$font-family-sans-serif: "Montserrat", sans-serif;
 
 // Include remainder of required Bootstrap stylesheets
 @import "~bootstrap/scss/variables";
 @import "~bootstrap/scss/mixins";
 // Modify variables
 
-// Custom colors map
+// Custom maps
+// Theme colos
 $custom-colors: (
-        "custom-dark": #1B0E1B
+        "custom-dark": #1B0E1B,
+);
+
+// Spacers
+$spacer: 1rem !default;
+$custom-spacers: (
+        6: ($spacer * .75),   //12px
+        7: ($spacer * 2),     //32px
+        8: ($spacer * 2.5),   //40px
+        9: ($spacer * 1.25),  //20px
+        10: ($spacer * 4.5),  //72px
 );
 
 // Merge the maps
 $theme-colors: map-merge($theme-colors, $custom-colors);
+$spacers: map-merge($spacers, $custom-spacers);
 
 // Include optional Bootstrap components
-
 @import "~bootstrap/scss/root";
 @import "~bootstrap/scss/reboot";
 @import "~bootstrap/scss/type";
