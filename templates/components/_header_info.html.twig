@@ -1,15 +1,13 @@
 {% extends 'components/_wrapper.html.twig' %}
-{#TODO Rewrite on back#}
-{% set extracontainerclasses = 'bg-custom-dark' %}
 {% block wrappercontent %}
     <div class="row mx-0 py-3">
         <div class="col-2">
             <img class="text-white mr-2" src="{{ absolute_url(asset('build/icons/phone.svg')) }}">
-            <a href="tel:{{ navbar.header.phone }}" class="node-text__header text-white">{{ navbar.header.phone }}</a>
+            <a href="tel:{{ navbar.header.phone }}" class="navbar-header__text text-white font-weight-regular">{{ navbar.header.phone }}</a>
         </div>
         <div class="col-2">
             <img class="text-white mr-2" src="{{ absolute_url(asset('build/icons/email.svg')) }}">
-            <a href="mailto:{{ navbar.header.email }}" class="node-text__header text-white">{{ navbar.header.email }}</a>
+            <a href="mailto:{{ navbar.header.email }}" class="navbar-header__text text-white font-weight-regular">{{ navbar.header.email }}</a>
         </div>
     </div>
 {% endblock %}

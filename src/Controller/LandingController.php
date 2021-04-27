@@ -19,7 +19,7 @@ class LandingController extends AbstractController
         return $this->render('landing/index.html.twig', [
             'controller_name' => 'LandingController',
             'extracontainerclasses' => self::WRAPPER_CLASS,
-            'navbar' => $extendedNavbarGenerator->getNavbarWithBanner()
+            'navbar' => $extendedNavbarGenerator->getNavbarWithBanner(),
         ]);
     }
 }

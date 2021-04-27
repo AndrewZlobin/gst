@@ -1,26 +1,34 @@
 {% extends 'components/_wrapper.html.twig' %}
-{% set extracontainerclasses = 'node-navbar__banner' %}
+{% if navbar.extracontainerclasses is defined %}
+    {% set extracontainerclasses = navbar.extracontainerclasses %}
+{% endif %}
 {% block wrappercontent %}
-    <div class="node-navbar_with_banner">
-        <nav class="node-navbar_with_banner__menu d-flex align-items-end">
+    <div class="navbar-with-banner">
+        <nav class="navbar-with-banner__menu row mx-0 pt-4">
             {% for link in navbar.links %}
                 {% if link.renderinlogo is defined %}
-                    <a class="node-navbar_with_banner__logo mr-auto" href="{{ link.href }}">
-                        <img src="{{ absolute_url(asset('build/img/navbar_logo.svg')) }}" alt="{{ link.title }}">
-                    </a>
-                {% else %}
-                    <a class="node-navbar_with_banner__link node-text__link nav-link text-white" href="#">
-                        {{ link.title|upper }}
-                    </a>
+                    <div class="col-4">
+                        <a class="navbar-with-banner__logo mr-auto" href="{{ link.href }}">
+                            <img src="{{ absolute_url(asset('build/img/navbar_logo.svg')) }}" alt="{{ link.title }}">
+                        </a>
+                    </div>
                 {% endif %}
             {% endfor %}
+            <div class="col-8 d-flex align-items-end">
+                {% for link in navbar.links %}
+                    {% if link.renderinlogo is not defined %}
+                        <a class="navbar-with-banner__link nav-link text-white font-weight-regular" href="#">{{ link.title|upper }}</a>
+                    {% endif %}
+                {% endfor %}
+            </div>
         </nav>
-        <h1 class="node-navbar_with_banner__header m-0 text-white">
-            {{ navbar.banner.header }}
-        </h1>
-        <h3 class="node-navbar_with_banner__caption m-0 text-white">
-            {{ navbar.banner.caption }}
-        </h3>
+        <div class="row mx-0">
+            <div class="col-4">
+                <h1 class="navbar-with-banner__header mb-7 text-white font-weight-bold">{{ navbar.banner.header }}</h1>
+                <h3 class="navbar-with-banner__caption mb-7 text-white font-weight-medium">{{ navbar.banner.caption }}</h3>
+                <a href="#" class="navbar-with-banner__button btn font-weight-medium">Узнать о нас</a>
+            </div>
+        </div>
     </div>
 {% endblock %}
 {% dump navbar %}

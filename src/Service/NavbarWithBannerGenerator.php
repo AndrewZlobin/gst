@@ -7,6 +7,8 @@ use Symfony\Contracts\Translation\TranslatorInterface;
 
 class NavbarWithBannerGenerator
 {
+    const WRAPPER_CLASS = 'navbar-banner';
+
     private NavbarGenerator $navbar;
     private TranslatorInterface $translator;
 
@@ -20,6 +22,7 @@ class NavbarWithBannerGenerator
     {
         $navbar = $this->navbar->getNavbar();
         $navbar['banner'] = $this->getBannerData();
+        $navbar['extracontainerclasses'] = self::WRAPPER_CLASS;
 
         return $navbar;
     }

@@ -1,39 +1,37 @@
-$node-banner-height:      1088px;
-
-.node-navbar {
-  &__banner {
-    background: url("/assets/img/landing_bg.png") no-repeat;
-    background-size: cover;
-    height: $node-banner-height;
+.navbar-header {
+  &__text {
+    font-size: $navbar-header-font-size;
+    line-height: $navbar-header-line-height;
   }
 }
 
-.node-navbar {
-  &_with_banner {
-    display: grid;
-    grid-template-areas:
-            "menu menu"
-            "header ."
-            "caption .";
-    grid-template-columns: 0.3fr 0.7fr;
-    grid-template-rows: 0.35fr 0.1fr 0.1fr 0.1fr;
+.navbar-banner {
+  background: url("/assets/img/landing_bg.png") no-repeat;
+  background-size: cover;
+  height: $navbar-banner-height;
+}
 
-    height: 100%;
-    align-items: flex-start;
-    padding: $spacer * 1.5 0;
-
-    &__menu {
-      grid-area: menu;
-    }
-
-    &__header {
-      grid-area: header;
-    }
-
-    &__caption {
-      grid-area: caption;
-    }
-
-    &__button {}
+.navbar-with-banner {
+  &__menu {
+    margin-bottom: $navbar-with-banner-margin-bottom;
+  }
+  &__logo {}
+  &__link {
+    font-size: $navbar-link-font-size;
+    line-height: $navbar-link-line-height;
+  }
+  &__header {
+    font-size: $navbar-with-banner-header-font-size;
+    line-height: $navbar-with-banner-header-line-height;
+  }
+  &__caption {
+    font-size: $navbar-with-banner-caption-font-size;
+    line-height: $navbar-with-banner-caption-line-height;
+  }
+  &__button {
+    background: $navbar-with-banner-button-color;
+    padding: $spacer $spacer * 2;
+    color: $white;
+    @include box-shadow($btn-box-shadow);
   }
 }
