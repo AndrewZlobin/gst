@@ -8,6 +8,8 @@ use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 
 class NavbarGenerator
 {
+    const LANDING = 'landing';
+
     private TranslatorInterface $translator;
     private UrlGeneratorInterface $router;
 
@@ -29,8 +31,8 @@ class NavbarGenerator
     {
         return [
             [
-                'title' => $this->translator->trans('navbar.links.main'),
-                'href' => $this->router->generate('main'),
+                'title' => $this->translator->trans('navbar.links.' . self::LANDING),
+                'href' => $this->router->generate(self::LANDING),
                 'renderinlogo' => true
             ],
             [
