@@ -17,16 +17,16 @@
             <div class="col-8 d-flex align-items-end">
                 {% for link in navbar.links %}
                     {% if link.renderinlogo is not defined %}
-                        <a class="navbar-with-banner__link nav-link text-white font-weight-regular" href="#">{{ link.title|upper }}</a>
+                        <a class="navbar-with-banner__link nav-link" href="#">{{ link.title|upper }}</a>
                     {% endif %}
                 {% endfor %}
             </div>
         </nav>
         <div class="row mx-0">
             <div class="col-4">
-                <h1 class="navbar-with-banner__header mb-7 text-white font-weight-bold">{{ navbar.banner.header }}</h1>
-                <h3 class="navbar-with-banner__caption mb-7 text-white font-weight-medium">{{ navbar.banner.caption }}</h3>
-                <a href="#" class="navbar-with-banner__button btn font-weight-medium">{{ navbar.banner.button }}</a>
+                <h1 class="navbar-with-banner__header mb-7">{{ navbar.banner.header }}</h1>
+                <h3 class="navbar-with-banner__caption mb-7">{{ navbar.banner.caption }}</h3>
+                <a href="#" class="navbar-with-banner__button btn">{{ navbar.banner.button }}</a>
             </div>
         </div>
     </div>

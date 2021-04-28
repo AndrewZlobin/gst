@@ -1,0 +1,6 @@
+@mixin style-text-node($textsize: $font-size-base, $textlineheight: $line-height-base, $textcolor: $body-color, $textfontweight: $font-weight-base) {
+  font-size: $textsize;
+  line-height: $textlineheight;
+  color: $textcolor;
+  font-weight: $textfontweight;
+}

@@ -3,7 +3,8 @@ $navbar-header-font-size:     12px;
 $navbar-header-line-height:   15px;
 
 // For navbar
-$navbar-banner-height:        1088px;
+$navbar-banner-height:            1088px;
+$navbar-banner-margin-bottom:     64px;
 
 $navbar-link-font-size:       18px;
 $navbar-link-line-height:     18px;
@@ -16,4 +17,6 @@ $navbar-with-banner-header-line-height:     45px;
 $navbar-with-banner-caption-font-size:      25px;
 $navbar-with-banner-caption-line-height:    34px;
 
-$navbar-with-banner-button-color:       linear-gradient(92.08deg, #EFC455 -3.35%, #E6AD41 111.73%);
+$navbar-with-banner-button-color:         linear-gradient(92.08deg, #EFC455 -3.35%, #E6AD41 111.73%);
+$navbar-with-banner-button-font-size:     19px;
+$navbar-with-banner-button-line-height:   23px;

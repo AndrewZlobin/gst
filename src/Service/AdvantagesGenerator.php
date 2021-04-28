@@ -32,17 +32,22 @@ class AdvantagesGenerator
 
     public function getAdvantagesBlocks(): array
     {
-        $advantages = [];
+        $translationid = self::IDENTIFIER;
+
+        $advantages = [
+            'extracontainerclasses' => self::WRAPPER_CLASS,
+            'header' => $this->translator->trans("${translationid}.header"),
+        ];
 
         foreach ($this->getAdvantages() as $advantage) {
-            $title = $this->translator->trans("advantages.${advantage}.title");
-            $message = $this->translator->trans("advantages.${advantage}.message");
+            $title = $this->translator->trans("${translationid}.${advantage}.title");
+            $message = $this->translator->trans("${translationid}.${advantage}.message");
+            $image = $advantage;
 
             $advantages['blocks'][$advantage]['title'] = $title;
             $advantages['blocks'][$advantage]['message'] = $message;
+            $advantages['blocks'][$advantage]['image'] = $image;
         }
-
-        $advantages['extracontainerclasses'] = self::WRAPPER_CLASS;
 
         return $advantages;
     }

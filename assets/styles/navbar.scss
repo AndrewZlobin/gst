@@ -1,7 +1,6 @@
 .navbar-header {
   &__text {
-    font-size: $navbar-header-font-size;
-    line-height: $navbar-header-line-height;
+    @include style-text-node($navbar-header-font-size, $navbar-header-line-height, $white, $font-weight-regular);
   }
 }
 
@@ -9,29 +8,30 @@
   background: url("/assets/img/landing_bg.png") no-repeat;
   background-size: cover;
   height: $navbar-banner-height;
+  margin-bottom: $navbar-banner-margin-bottom;
 }
 
 .navbar-with-banner {
   &__menu {
     margin-bottom: $navbar-with-banner-margin-bottom;
   }
-  &__logo {}
+
   &__link {
-    font-size: $navbar-link-font-size;
-    line-height: $navbar-link-line-height;
+    @include style-text-node($navbar-link-font-size, $navbar-link-line-height, $white, $font-weight-regular);
   }
+
   &__header {
-    font-size: $navbar-with-banner-header-font-size;
-    line-height: $navbar-with-banner-header-line-height;
+    @include style-text-node($navbar-with-banner-header-font-size, $navbar-with-banner-header-line-height, $white, $font-weight-bold);
   }
+
   &__caption {
-    font-size: $navbar-with-banner-caption-font-size;
-    line-height: $navbar-with-banner-caption-line-height;
+    @include style-text-node($navbar-with-banner-caption-font-size, $navbar-with-banner-caption-line-height, $white, $font-weight-medium);
   }
+
   &__button {
     background: $navbar-with-banner-button-color;
     padding: $spacer $spacer * 2;
-    color: $white;
+    @include style-text-node($navbar-with-banner-button-font-size, $navbar-with-banner-button-line-height, $white, $font-weight-medium);
     @include box-shadow($btn-box-shadow);
   }
 }
