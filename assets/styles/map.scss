@@ -1,0 +1,8 @@
+$map-min-height:    585px;
+$map-fill-color:    #2D394F;
+
+.map-container {
+  $map-container: ".map-container";
+
+  min-height: $map-min-height;
+}
