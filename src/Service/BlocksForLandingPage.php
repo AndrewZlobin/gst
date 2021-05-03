@@ -4,17 +4,17 @@
 namespace App\Service;
 
 
-use Symfony\Contracts\Translation\TranslatorInterface;
-
 class BlocksForLandingPage
 {
     private NavbarWithBannerGenerator $navbar;
     private AdvantagesGenerator $advantages;
+    private MapGenerator $map;
 
-    public function __construct(NavbarWithBannerGenerator $navbar, AdvantagesGenerator $advantages, TranslatorInterface $translator)
+    public function __construct(NavbarWithBannerGenerator $navbar, AdvantagesGenerator $advantages, MapGenerator $map)
     {
         $this->navbar = $navbar;
         $this->advantages = $advantages;
+        $this->map = $map;
     }
 
     /**
@@ -31,6 +31,14 @@ class BlocksForLandingPage
     public function getAdvantages(): AdvantagesGenerator
     {
         return $this->advantages;
+    }
+
+    /**
+     * @return MapGenerator
+     */
+    public function getMap(): MapGenerator
+    {
+        return $this->map;
     }
 
 
