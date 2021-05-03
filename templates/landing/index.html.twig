@@ -1,13 +1,25 @@
-{% extends 'landing/layout.html.twig' %}
+{% extends 'base.html.twig' %}
 
 {% block stylesheets %}
     {{ parent() }}
     {{ encore_entry_link_tags('landing') }}
+{#    <script src="node_modules/d3/d3.min.js"></script>#}
+{#    <script src="node_modules/topojson/build/topojson.min.js"></script>#}
+{#    <script src="node_modules/datamaps/dist/datamaps.world.min.js"></script>#}
+{% endblock %}
+
+{% block title %}Hello LandingController!{% endblock %}
+
+{% block content %}
+    {{  include('components/_advantages.html.twig') }}
+    {{  include('components/_map.html.twig') }}
+{% endblock %}
+
+{% block footer %}
+    <p>Footer</p>
 {% endblock %}
 
 {% block javascripts %}
     {{ parent() }}
     {{ encore_entry_script_tags('landing') }}
 {% endblock %}
-
-{% block title %}Hello LandingController!{% endblock %}

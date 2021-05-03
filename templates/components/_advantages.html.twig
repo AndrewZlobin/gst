@@ -10,7 +10,6 @@
         {% for advantage in advantages.blocks %}
             {#Image src variable for each advantage#}
             {% set imgsrc = 'build/img/' ~ advantage.image ~ '.png' %}
-
             <div class="landing-advantage">
                 <img class="landing-advantage__img" src="{{ absolute_url(asset(imgsrc)) }}">
                 <div class="landing-advantage__title">{{ advantage.title|upper }}</div>

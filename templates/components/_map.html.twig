@@ -1,0 +1,8 @@
+{% extends 'components/_wrapper.html.twig' %}
+{% if advantages.extracontainerclasses is defined %}
+    {% set extracontainerclasses = advantages.extracontainerclasses %}
+{% endif %}
+{% block wrappercontent %}
+    <h1>{{ offices.header|raw }}</h1>
+    <div id="map-container" class="map-container"></div>
+{% endblock %}
