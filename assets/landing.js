@@ -37,6 +37,7 @@ let map = new Datamap({
         radius: 8,
         popupOnHover: true,
         popupTemplate: function(geography, data) { // This function should just return a string
+            // TODO Rewrite using data-attributes generated in service
             return `<div class="hoverinfo">
                         <div class="map-popup d-flex flex-column">
                             <div class="map-popup__img" style="background-image: url('${require('./img/landing_bg.png')}');"></div>
