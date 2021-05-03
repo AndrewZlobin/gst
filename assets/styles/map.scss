@@ -1,8 +1,22 @@
 $map-min-height:    585px;
 $map-fill-color:    #2D394F;
 
+$map-popup-min-height:      240px;
+$map-popup-img-min-height:  150px;
+
 .map-container {
   $map-container: ".map-container";
-
   min-height: $map-min-height;
+}
+
+.map-popup {
+  $map-popup: ".map-popup";
+
+  min-height: $map-popup-min-height;
+
+  #{$map-popup}__img {
+    min-height: $map-popup-img-min-height;
+    width: 100%;
+    background-size: cover;
+  }
 }
