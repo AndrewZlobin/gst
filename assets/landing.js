@@ -6,9 +6,8 @@ import './bootstrap';
 
 //For map
 import * as d3 from "d3";
-import * as Datamap from "datamaps/dist/datamaps.rus";
-
-console.log(require('./data/rus.topo.json'));
+// import * as Datamap from "datamaps/dist/datamaps.rus";
+import * as Datamap from "./libs/datamaps.rus";
 
 const mapSettings = {
     defaultFill: '#2D394F',
@@ -24,7 +23,7 @@ let map = new Datamap({
     scope: 'RUS',
     fills: {
         defaultFill: mapSettings.defaultFill,
-        ye100: '#E8AB10'
+        ye100: 'url(#bubble-gradient)'
     },
     geographyConfig: {
         dataJson: require('./data/rus.topo.json'),
@@ -33,8 +32,8 @@ let map = new Datamap({
     },
     bubblesConfig: {
         borderWidth: 2,
-        borderColor: '#E8AB10',
-        radius: 8,
+        borderColor: 'url(#bubble-gradient)',
+        radius: 10,
         popupOnHover: true,
         popupTemplate: function(geography, data) { // This function should just return a string
             // TODO Rewrite using data-attributes generated in service
@@ -46,6 +45,7 @@ let map = new Datamap({
                         </div>
                     </div>`;
         },
+        fillOpacity: 1
     },
     setProjection: function (element) {
         const projection = d3.geo.mercator()
@@ -79,28 +79,6 @@ map.bubbles([
         caption: 'г. Санкт-Петербург, ул. Двинская, д. 3, лит. А, оф. 408.',
     }
 ]);
-
-Datamap.prototype.updatePopup = function (element, d, options) {
-    var self = this;
-    element.on('mousemove', null);
-    element.on('mousemove', function() {
-        var position = d3.mouse(self.options.element);
-        d3.select(self.svg[0][0].parentNode).select('.datamaps-hoverover')
-            .style('top', ( (position[1] - 120)) + "px")// Half of block height
-            .html(function() {
-                var data = JSON.parse(element.attr('data-info'));
-                try {
-                    return options.popupTemplate(d, data);
-                } catch (e) {
-                    return "";
-                }
-            })
-            .style('left', ( (position[0] + 21)) + "px");
-    });
-    d3.select(self.svg[0][0].parentNode)
-        .select('.datamaps-hoverover')
-        .style('display', 'block');
-};
 
 // Make map responsive on different screens
 window.addEventListener('resize', function () {

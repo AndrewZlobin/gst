@@ -1,3 +1,5 @@
+import * as d3 from "d3";
+
 (function() {
   var svg;
 
@@ -260,7 +262,7 @@
             }
           }
           $this.on('mousemove', null);
-          d3.selectAll('.datamaps-hoverover').style('display', 'none');
+          d3.selectAll('.datamaps-hoverover').style('display', 'none').attr('class', 'datamaps-hoverover');
         });
     }
 
@@ -445,10 +447,16 @@
 
     layer
         .append('defs')
-        .append('linearGradient')
+        .append('radialGradient')
         .attr('id', 'bubble-gradient')
         .append('stop').attr('offset', '0%').attr('stop-color', '#E8AB10');
-    layer.select('linearGradient')
+    layer.select('radialGradient')
+        .append('stop').attr('offset', '70%').attr('stop-color', '#D29218');
+    layer.select('radialGradient')
+        .append('stop').attr('offset', '80%').attr('stop-color', 'transparent');
+    layer.select('radialGradient')
+        .append('stop').attr('offset', '90%').attr('stop-color', '#E8AB10');
+    layer.select('radialGradient')
         .append('stop').attr('offset', '100%').attr('stop-color', '#D29218');
 
     var bubbles = layer.selectAll('circle.datamaps-bubble').data( data, options.key );
@@ -539,15 +547,8 @@
             }
           }
 
-          d3.selectAll('.datamaps-hoverover').style('display', 'none');
+          d3.selectAll('.datamaps-hoverover').style('display', 'none').attr('class', 'datamaps-hoverover');
         })
-
-      // layer.selectAll('.datamaps-bubble').each(function () {
-      //     var additionalCircle = document.createElement('circle');
-      //     additionalCircle.setAttribute('r', '5');
-      //     this.parentNode.insertBefore(this.node().cloneNode(true), this.nextSibling);
-      // });
-
     bubbles.transition()
       .duration(400)
       .attr('r', function ( datum ) {
@@ -737,24 +738,26 @@
   };
 
   Datamap.prototype.updatePopup = function (element, d, options) {
-    var self = this;
-    element.on('mousemove', null);
-    element.on('mousemove', function() {
-      var position = d3.mouse(self.options.element);
-      d3.select(self.svg[0][0].parentNode).select('.datamaps-hoverover')
-        .style('top', ( (position[1] + 30)) + "px")
-        .html(function() {
-          var data = JSON.parse(element.attr('data-info'));
-          try {
-            return options.popupTemplate(d, data);
-          } catch (e) {
-            return "";
-          }
-        })
-        .style('left', ( position[0]) + "px");
-    });
-
-    d3.select(self.svg[0][0].parentNode).select('.datamaps-hoverover').style('display', 'block');
+      var self = this;
+      element.on('mousemove', null);
+      element.on('mousemove', function() {
+          var position = d3.mouse(self.options.element);
+          d3.select(self.svg[0][0].parentNode).select('.datamaps-hoverover')
+              .style('top', ( (position[1] - 120)) + "px")// Half of block height
+              .html(function() {
+                  var data = JSON.parse(element.attr('data-info'));
+                  try {
+                      return options.popupTemplate(d, data);
+                  } catch (e) {
+                      return "";
+                  }
+              })
+              .style('left', ( (position[0] + 21)) + "px");
+      });
+      d3.select(self.svg[0][0].parentNode)
+          .select('.datamaps-hoverover')
+          .style('display', 'inline-block')
+          .attr('class', 'datamaps-hoverover isvisible');
   };
 
   Datamap.prototype.addPlugin = function( name, pluginFn ) {
