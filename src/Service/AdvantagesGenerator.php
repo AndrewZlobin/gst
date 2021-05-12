@@ -9,7 +9,7 @@ use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 class AdvantagesGenerator
 {
     const IDENTIFIER = 'advantages';
-    const WRAPPER_CLASS = 'bg-white';
+    const WRAPPER_CLASS = 'bg-white block-advantages';
 
     const PROFESSIONALS = 'professionals';
     const PERMISSIONS = 'permissions';
