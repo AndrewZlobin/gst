@@ -8,6 +8,8 @@ $landing-header-font-size:        32px;
 $landing-header-line-height:      39px;
 $landing-header-margin-bottom:    72px;
 
+$landing-block-advantages-bottom-offset:    130px;
+
 $landing-advantages-row-gap:        $spacer * 4.125; //66px
 $landing-advantages-column-gap:     $spacer;// 16px
 $landing-advantages-block-width:    325px;
@@ -31,6 +33,12 @@ $landing-advantage-image-scale:   88px;
                   $font-weight-bold
   );
   margin-bottom: $landing-header-margin-bottom;
+}
+
+.block {
+  &-advantages {
+    margin-bottom: $landing-block-advantages-bottom-offset;
+  }
 }
 
 .landing-advantages {
