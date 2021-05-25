@@ -1,6 +1,13 @@
 @mixin style-text-node($textsize: $font-size-base, $textlineheight: $line-height-base, $textcolor: $body-color, $textfontweight: $font-weight-base) {
-  font-size: $textsize;
-  line-height: $textlineheight;
-  color: $textcolor;
-  font-weight: $textfontweight;
+  font-size: #{$textsize};
+  line-height: #{$textlineheight};
+  color: #{$textcolor};
+  font-weight: #{$textfontweight};
+}
+
+@mixin style-icon($iconsize: $font-size-base, $iconwidth: $font-size-base, $iconheight: $font-size-base, $iconcolor: $black) {
+  font-size: #{$iconsize};
+  width: #{$iconwidth};
+  height: #{$iconheight};
+  color: #{$iconcolor};
 }

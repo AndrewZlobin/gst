@@ -3,6 +3,7 @@
 @import "./assets/styles/custom-mixins";
 @import "./assets/styles/navbar";
 @import "./assets/styles/map";
+@import "./assets/styles/footer";
 
 $landing-header-font-size:        32px;
 $landing-header-line-height:      39px;
@@ -24,6 +25,14 @@ $landing-advantage-message-font-size:     14px;
 $landing-advantage-message-line-height:   17px;
 
 $landing-advantage-image-scale:   88px;
+
+$landing-activities-grid-min-width:       263px;
+$landing-activities-empty-space-height:   120px;
+
+$landing-activity-grid-template-rows:     201px calc(72px + #{$spacer}) calc(60px + #{$spacer}) max-content;
+$landing-activity-box-shadow:             7px 10px 29px -2px rgba(0, 0, 0, 0.17);
+$landing-activity-title-background-color: map-get($theme-colors, "map-card-text");
+$landing-activity-description-color:      map-get($theme-colors, "map-card-text");
 
 .landing-header {
   @include style-text-node(
@@ -105,5 +114,38 @@ $landing-advantage-image-scale:   88px;
         display: none;
       }
     }
+  }
+}
+
+.landing-activities {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax($landing-activities-grid-min-width, 1fr));
+  gap: $spacer * 2;
+
+  &__emptyspace {
+    height: $landing-activities-empty-space-height;
+  }
+}
+
+.landing-activity {
+  display: grid;
+  grid-template-rows: $landing-activity-grid-template-rows;
+  box-shadow: $landing-activity-box-shadow;
+
+  &__title {
+    @include style-text-node("18px", "22px", $white, $font-weight-semi-bold);
+    background-color: $landing-activity-title-background-color;
+  }
+
+  &__description {
+    @include style-text-node("11px", "13px", $landing-activity-description-color, $font-weight-extra-light);
+  }
+
+  &__button {
+    @include style-text-node("11px", "13px", map-get($theme-colors, "custom-yellow"), $font-weight-bold);
+  }
+
+  &__icon {
+    @include style-icon("9px", "9px", "9px", map-get($theme-colors, "custom-yellow"));
   }
 }
