@@ -3,9 +3,6 @@
 {% block stylesheets %}
     {{ parent() }}
     {{ encore_entry_link_tags('landing') }}
-{#    <script src="node_modules/d3/d3.min.js"></script>#}
-{#    <script src="node_modules/topojson/build/topojson.min.js"></script>#}
-{#    <script src="node_modules/datamaps/dist/datamaps.world.min.js"></script>#}
 {% endblock %}
 
 {% block title %}Hello LandingController!{% endblock %}
@@ -16,7 +13,10 @@
 {% endblock %}
 
 {% block footer %}
-    <p>Footer</p>
+    <div class="footer__substratum">
+        {{  include('components/_block_above_footer.html.twig') }}
+        {{  include('components/_footer.html.twig') }}
+    </div>
 {% endblock %}
 
 {% block javascripts %}
