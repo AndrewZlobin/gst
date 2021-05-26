@@ -8,17 +8,19 @@ use Symfony\Contracts\Translation\TranslatorInterface;
 class FooterWithBlockGenerator
 {
     const IDENTIFIER = 'footer';
-    const TITLE_TRANSLATION = 'footer.title';
+    const WRAPPER_CLASS = 'bg-transparent block-footer';
+
+    const CAPTION = 'address';
+    const BLOCK_HAS_CAPTION = 'city';
     const BLOCKS = [
         'phone',
         'email',
         'city',
-        'address',
     ];
     const ICONS = [
         'phone',
         'email',
-        'address',
+        'map',
     ];
     const LINKS = 'links';
 
@@ -41,11 +43,9 @@ class FooterWithBlockGenerator
     {
         return [
             'footercontent' => $footercontent,
+            'extracontainerclasses' => self::WRAPPER_CLASS,
             'title' => $this->getTitle(),
-            'blocks' => [
-                'titles' => $this->getBlocks(),
-                'icons' => $this->getIcons(),
-            ],
+            'blocks' => $this->getBlocks(),
             'links' => $this->getLinks(),
         ];
     }
@@ -63,22 +63,27 @@ class FooterWithBlockGenerator
 
         $blocks = [];
 
-        foreach (self::BLOCKS as $block) {
-            $blocks[$block] = $this->translator->trans("${translationid}.blocks.${block}");
+        foreach (self::BLOCKS as $key => $block) {
+            $blocks[$block]['title'] = $this
+                ->translator
+                ->trans("${translationid}.blocks.${block}");
+
+            if ($block === self::BLOCK_HAS_CAPTION) {
+                $captiontranslation = self::CAPTION;
+
+                $blocks[$block]['caption'] = $this
+                    ->translator
+                    ->trans("${translationid}.blocks.${captiontranslation}");
+            }
+
+            if (array_key_exists($key, self::ICONS)) {
+                $blocks[$block]['icon'] = self::ICONS[$key];
+            }
         }
+
+        dump($blocks);
 
         return $blocks;
-    }
-
-    protected function getIcons(): array
-    {
-        $icons = [];
-
-        foreach (self::ICONS as $icon) {
-            $icons[$icon] = $icon;
-        }
-
-        return $icons;
     }
 
     protected function getLinks(): array
