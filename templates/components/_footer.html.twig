@@ -1,4 +1,46 @@
-{% dump(footer) %}
-<div>
-    <h1>{{ footer.title }}</h1>
-</div>
+{% extends 'components/_wrapper.html.twig' %}
+{% if footer.footercontent.extracontainerclasses is defined %}
+    {% set extracontainerclasses = footer.extracontainerclasses %}
+{% endif %}
+{% block wrappercontent %}
+    <div class="footer-container py-8">
+        <div class="footer-container__header">
+            {% for link in footer.links %}
+                {% if link.renderinlogo is defined %}
+                    <a class="footer-container__mainlink" href="{{ link.href }}">
+                        <img src="{{ absolute_url(asset('build/img/navbar_logo.svg')) }}" alt="{{ link.title }}">
+                    </a>
+                {% endif %}
+            {% endfor %}
+        </div>
+        <div class="footer-container__links">
+            {% for link in footer.links %}
+                {% if link.renderinlogo is not defined %}
+                    <div class="d-flex align-items-center">
+                        <img class="footer-container__arrow mr-3" src="{{ absolute_url(asset('build/icons/arrow_link_right.svg')) }}" alt="{{ link.title }}">
+                        <a class="footer-container__link" data-footerlink="{{ loop.index }}" href="#">{{ link.title }}</a>
+                    </div>
+                {% endif %}
+            {% endfor %}
+        </div>
+        <div class="footer-container__blocks">
+            <div class="footer-container__contacts">{{ footer.title }}</div>
+            {% for block in footer.blocks %}
+                <div class="footer-container__block" data-footerblock="{{ loop.index }}">
+                    {% if block.icon is defined %}
+                        {% set imgsrc = 'build/icons/' ~ block.icon ~ '.svg' %}
+                        <img class="footer-container__icon" alt="{{ block.icon }}" src="{{ absolute_url(asset(imgsrc)) }}">
+                    {% endif %}
+                    <div class="footer-container__info">
+                        {% if block.caption is defined %}
+                            <div class="footer-container__title footer-container__title_small">{{ block.title }}</div>
+                            <div class="footer-container__caption">{{ block.caption }}</div>
+                        {% else %}
+                            <div class="footer-container__title">{{ block.title }}</div>
+                        {% endif %}
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}
