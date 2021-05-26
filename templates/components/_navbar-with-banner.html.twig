@@ -7,14 +7,14 @@
         <nav class="navbar-with-banner__menu row mx-0 pt-4">
             {% for link in navbar.links %}
                 {% if link.renderinlogo is defined %}
-                    <div class="col-4">
+                    <div class="col col-md-8 col-lg-6 col-xl-4 mb-3 mb-xl-0">
                         <a class="navbar-with-banner__logo mr-auto" href="{{ link.href }}">
                             <img src="{{ absolute_url(asset('build/img/navbar_logo.svg')) }}" alt="{{ link.title }}">
                         </a>
                     </div>
                 {% endif %}
             {% endfor %}
-            <div class="col-8 d-flex align-items-end">
+            <div class="col-6 col-md-8 d-flex align-items-end flex-wrap flex-md-nowrap">
                 {% for link in navbar.links %}
                     {% if link.renderinlogo is not defined %}
                         <a class="navbar-with-banner__link nav-link" href="#">{{ link.title|upper }}</a>
@@ -23,7 +23,7 @@
             </div>
         </nav>
         <div class="row mx-0">
-            <div class="col-4">
+            <div class="col-10 col-sm-8 col-md-6 col-lg-4">
                 <h1 class="navbar-with-banner__header mb-7">{{ navbar.banner.header }}</h1>
                 <h3 class="navbar-with-banner__caption mb-7">{{ navbar.banner.caption }}</h3>
                 <a href="#" class="navbar-with-banner__button btn">{{ navbar.banner.button }}</a>
