@@ -18,6 +18,11 @@
 
   &__link {
     @include style-text-node($navbar-link-font-size, $navbar-link-line-height, $white, $font-weight-regular);
+
+    // TODO May be not needed
+    &:hover {
+      color: map-get($theme-colors, "custom-yellow");
+    }
   }
 
   &__header {
