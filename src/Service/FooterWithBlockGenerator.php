@@ -81,8 +81,6 @@ class FooterWithBlockGenerator
             }
         }
 
-        dump($blocks);
-
         return $blocks;
     }
 
