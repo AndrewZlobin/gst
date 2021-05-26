@@ -66,7 +66,7 @@ $landing-activity-description-color:      map-get($theme-colors, "map-card-text"
   }
 
   @include media-breakpoint-down(sm) {
-    grid-template-columns: repeat(auto-fit, minmax($landing-advantages-block-width * .6, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(calc(#{$landing-advantages-block-width * .6} + #{$spacer * 1.25}), 1fr));
   }
 }
 
@@ -122,15 +122,25 @@ $landing-activity-description-color:      map-get($theme-colors, "map-card-text"
   grid-template-columns: repeat(auto-fit, minmax($landing-activities-grid-min-width, 1fr));
   gap: $spacer * 2;
 
-  &__emptyspace {
-    height: $landing-activities-empty-space-height;
+  &__container {
+    padding-bottom: $landing-activities-empty-space-height;
   }
 }
 
 .landing-activity {
   display: grid;
-  grid-template-rows: $landing-activity-grid-template-rows;
   box-shadow: $landing-activity-box-shadow;
+  grid-template-rows: $landing-activity-grid-template-rows;
+
+  @include media-breakpoint-down(sm) {
+    grid-template-columns: .5fr .5fr;
+    grid-template-rows: 1fr auto min-content;
+  }
+
+  @include media-breakpoint-down(xs) {
+    grid-template-rows: $landing-activity-grid-template-rows;
+    grid-template-columns: auto;
+  }
 
   &__title {
     @include style-text-node("18px", "22px", $white, $font-weight-semi-bold);
@@ -139,6 +149,28 @@ $landing-activity-description-color:      map-get($theme-colors, "map-card-text"
 
   &__description {
     @include style-text-node("11px", "13px", $landing-activity-description-color, $font-weight-extra-light);
+
+    @include media-breakpoint-down(sm) {
+      grid-row: 2;
+      grid-column: span 2;
+    }
+
+    @include media-breakpoint-down(sm) {
+      grid-row: 3;
+      grid-column: 1;
+    }
+  }
+
+  &__actions {
+    @include media-breakpoint-down(sm) {
+      grid-row: 3;
+      grid-column: span 2;
+    }
+
+    @include media-breakpoint-down(sm) {
+      grid-row: 4;
+      grid-column: 1;
+    }
   }
 
   &__button {
