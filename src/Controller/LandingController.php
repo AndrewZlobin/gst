@@ -19,10 +19,12 @@ class LandingController extends AbstractController
         $navbar = $blocks->getNavbar();
         $advantages = $blocks->getAdvantages();
         $map = $blocks->getMap();
-        $footer = $blocks->getFooter();
+        $footer = $blocks->getFooterWithFormGenerator();
         $activities = $blocks->getActivities();
 
         $footercontent = $activities->getActivities();
+
+        dump($footer->getFooterWithForm($footercontent));
 
         return $this->render('landing/index.html.twig', [
             'controller_name' => 'LandingController',
@@ -30,7 +32,7 @@ class LandingController extends AbstractController
             $navbar->getIdentifier() => $navbar->getNavbarWithBanner(),
             $advantages->getIdentifier() => $advantages->getAdvantagesBlocks(),
             $map->getIdentifier() => $map->getOfficesForMap(),
-            $footer->getIdentifier() => $footer->getFooter($footercontent),
+            $footer->getIdentifier() => $footer->getFooterWithForm($footercontent),
         ]);
     }
 }

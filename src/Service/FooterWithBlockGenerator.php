@@ -57,7 +57,7 @@ class FooterWithBlockGenerator
         return $this->translator->trans("${translationid}.title");
     }
 
-    protected function getBlocks(): array
+    public function getBlocks(): array
     {
         $translationid = self::IDENTIFIER;
 

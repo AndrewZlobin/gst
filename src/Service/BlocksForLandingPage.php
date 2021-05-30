@@ -9,20 +9,23 @@ class BlocksForLandingPage
     private NavbarWithBannerGenerator $navbar;
     private AdvantagesGenerator $advantages;
     private MapGenerator $map;
-    private FooterWithBlockGenerator $footer;
     private ActivitiesGenerator $activities;
+    private FooterWithBlockGenerator $footer;
+    private FooterWithFormGenerator $footerWithFormGenerator;
 
     public function __construct(NavbarWithBannerGenerator $navbar,
                                 AdvantagesGenerator $advantages,
                                 MapGenerator $map,
                                 FooterWithBlockGenerator $footer,
-                                ActivitiesGenerator $activities)
+                                ActivitiesGenerator $activities,
+                                FooterWithFormGenerator $footerWithFormGenerator)
     {
         $this->navbar = $navbar;
         $this->advantages = $advantages;
         $this->map = $map;
         $this->footer = $footer;
         $this->activities = $activities;
+        $this->footerWithFormGenerator = $footerWithFormGenerator;
     }
 
     /**
@@ -64,4 +67,13 @@ class BlocksForLandingPage
     {
         return $this->activities;
     }
+
+    /**
+     * @return FooterWithFormGenerator
+     */
+    public function getFooterWithFormGenerator(): FooterWithFormGenerator
+    {
+        return $this->footerWithFormGenerator;
+    }
+
 }

@@ -53,6 +53,7 @@ offices:
     caption: г. Анапа, с. Витязево, пр-кт Южный, дом 20
 footer:
   title: Контакты
+  offices: Наши офисы
   blocks:
     phone: 8(499)705-14-88
     email: info@gazstroytech.ru
@@ -73,4 +74,13 @@ activities:
   construction equipment rental:
     title: Аренда строительной техники
     description: Собственный парк строительной техники, автотранспорта, специализированное оборудование для сварочных работ и доставка арендованной техники заказчику в любой регион оптимальным путем.
-
+form:
+  landing:
+    header: По вопросам сотрудничества
+    caption: Если у Вас есть вопросы по сотрудничеству, напишите нам.
+  placeholders:
+    fullname: ФИО
+    email: E-mail
+    phone: Телефон
+    theme: Тема
+    message: Сообщение
