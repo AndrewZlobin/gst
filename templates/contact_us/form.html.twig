@@ -1,5 +1,11 @@
 <div class="contact-us-form__header">{{ formheader }}</div>
 <div class="contact-us-form__caption">{{ formcaption }}</div>
-{% for child in form.children|keys %}
-{% endfor %}
-{{ form(form) }}
+{{ form_start(form, {'attr': {'class': 'contact-us-form__form'}}) }}
+    {{ form_row(form.fullname) }}
+    {{ form_row(form.email) }}
+    {{ form_row(form.phone) }}
+    {{ form_row(form.theme) }}
+    {{ form_row(form.message) }}
+    {{ form_row(form.submit) }}
+    {{ dump(app.flashes) }}
+{{ form_end(form) }}

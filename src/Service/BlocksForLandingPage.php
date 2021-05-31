@@ -4,6 +4,8 @@
 namespace App\Service;
 
 
+use App\Controller\ContactUsController;
+
 class BlocksForLandingPage
 {
     private NavbarWithBannerGenerator $navbar;
@@ -12,13 +14,15 @@ class BlocksForLandingPage
     private ActivitiesGenerator $activities;
     private FooterWithBlockGenerator $footer;
     private FooterWithFormGenerator $footerWithFormGenerator;
+    private ContactUsController $form;
 
     public function __construct(NavbarWithBannerGenerator $navbar,
                                 AdvantagesGenerator $advantages,
                                 MapGenerator $map,
                                 FooterWithBlockGenerator $footer,
                                 ActivitiesGenerator $activities,
-                                FooterWithFormGenerator $footerWithFormGenerator)
+                                FooterWithFormGenerator $footerWithFormGenerator,
+                                ContactUsController $form)
     {
         $this->navbar = $navbar;
         $this->advantages = $advantages;
@@ -26,6 +30,7 @@ class BlocksForLandingPage
         $this->footer = $footer;
         $this->activities = $activities;
         $this->footerWithFormGenerator = $footerWithFormGenerator;
+        $this->form = $form;
     }
 
     /**
@@ -74,6 +79,14 @@ class BlocksForLandingPage
     public function getFooterWithFormGenerator(): FooterWithFormGenerator
     {
         return $this->footerWithFormGenerator;
+    }
+
+    /**
+     * @return ContactUsController
+     */
+    public function getForm(): ContactUsController
+    {
+        return $this->form;
     }
 
 }
