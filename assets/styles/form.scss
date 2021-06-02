@@ -46,4 +46,30 @@ $contact-us-form-submit-border-radius:  $contact-us-form-border-radius;
     box-shadow: $contact-us-form-submit-box-shadow;
     border-radius: $contact-us-form-submit-border-radius;
   }
+
+  &__status {
+    &[data-ishidden="true"] {
+      opacity: 0;
+    }
+
+    &[data-ishidden="false"] {
+      opacity: 1;
+      transition: opacity .25s;
+    }
+  }
+
+  &__opened,
+  &__loading,
+  &__sent,
+  &__error,
+  &__result {
+    &[data-ishidden="true"] {
+      opacity: 0;
+    }
+
+    &[data-ishidden="false"] {
+      opacity: 1;
+      transition: opacity .4s;
+    }
+  }
 }

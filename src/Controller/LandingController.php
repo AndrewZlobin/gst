@@ -11,6 +11,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class LandingController extends AbstractController
 {
+    const IDENTIFIER = 'landing';
     const WRAPPER_CLASS = 'bg-custom-dark';
 
     /**
@@ -30,7 +31,7 @@ class LandingController extends AbstractController
             $navbar->getIdentifier() => $navbar->getNavbarWithBanner(),
             $advantages->getIdentifier() => $advantages->getAdvantagesBlocks(),
             $map->getIdentifier() => $map->getOfficesForMap(),
-            $footer->getIdentifier() => $footer->getFooterWithForm($activities->getActivities()),
+            $footer->getIdentifier() => $footer->getFooterWithForm($activities->getActivities(), self::IDENTIFIER),
         ]);
     }
 }

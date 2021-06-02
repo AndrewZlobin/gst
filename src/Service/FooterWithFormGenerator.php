@@ -9,7 +9,7 @@ use Symfony\Contracts\Translation\TranslatorInterface;
 class FooterWithFormGenerator
 {
     const IDENTIFIER = 'footer';
-    const FORM_IDENTIFIER = 'form.landing';
+    const FORM_IDENTIFIER = 'form';
     const WRAPPER_CLASS = 'bg-transparent block-footer';
 
     const SEPARATOR = ', ';
@@ -34,7 +34,7 @@ class FooterWithFormGenerator
         return self::IDENTIFIER;
     }
 
-    public function getFooterWithForm($footercontent)
+    public function getFooterWithForm($footercontent, string $page): array
     {
         return [
             'footercontent' => $footercontent,
@@ -42,7 +42,7 @@ class FooterWithFormGenerator
             'blocks' => $this->getFooterBlocks(),
             'officestitle' => $this->getFooterOfficesHeader(),
             'offices' => $this->getOfficesData(),
-            'formdata' => $this->getFormData(),
+            'formdata' => $this->getFormDataForPage($page),
         ];
     }
 
@@ -77,9 +77,9 @@ class FooterWithFormGenerator
         return $offices;
     }
 
-    protected function getFormData(): array
+    protected function getFormDataForPage(string $page): array
     {
-        $translatorid = self::FORM_IDENTIFIER;
+        $translatorid = self::FORM_IDENTIFIER . ".$page";
 
         return [
             'header' => $this->translator->trans("${translatorid}.header"),
