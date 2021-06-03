@@ -10,13 +10,17 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Mailer\Exception\TransportExceptionInterface;
 use Symfony\Component\Mailer\MailerInterface;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\Mime\Email;
 use Symfony\Contracts\Translation\TranslatorInterface;
+use Symfony\Bridge\Twig\Mime\TemplatedEmail;
 
 class ContactUsController extends AbstractController
 {
     const FORM_IDENTIFIER = 'form';
     const COPY_TO_IDENTIFIER = 'copyto';
+    const TWIG_FOR_EMAIL = 'emails/new.html.twig';
+    // TODO Rewrite emails
+    const SEND_TO = 'info@box.com';
+
     const FORM_STATUSES = [
         'opened' => [
             'identifier' => 'opened',
@@ -137,13 +141,20 @@ class ContactUsController extends AbstractController
 
     public function convertToEmail(object $formdata)
     {
-        // TODO Use templates for sending email
-        $email = (new Email())
+        $emailcontext = [
+            'fullname' => $formdata->fullname,
+            'phone' => $formdata->phone,
+            'useremail' => $formdata->email,
+            'theme' => $formdata->theme,
+            'message' => $formdata->message
+        ];
+
+        $email = (new TemplatedEmail())
             ->from($formdata->email)
-            ->to('andrewzlobin1992@gmail.com')
+            ->to(self::SEND_TO)
             ->subject($formdata->theme)
-            ->text($formdata->message)
-            ->text($formdata->phone);
+            ->htmlTemplate(self::TWIG_FOR_EMAIL)
+            ->context($emailcontext);
 
         if (isset($formdata->copyto)) {
             $email->cc($formdata->copyto);
