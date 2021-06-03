@@ -10,6 +10,16 @@ $contact-us-form-submit-box-shadow:     4px 7px 20px 6px rgba(0, 0, 0, 0.14);
 $contact-us-form-submit-border-radius:  $contact-us-form-border-radius;
 
 .contact-us-form {
+  &__header {
+    @include style-text-node("29px", "35px", map-get($theme-colors, "map-card-text"), $font-weight-bold);
+    margin-bottom: $spacer * 1.25;
+  }
+
+  &__caption {
+    @include style-text-node("19px", "23px", map-get($theme-colors, "map-card-text"), $font-weight-light);
+    margin-bottom: $spacer * 1.5;
+  }
+
   &__form {
     display: grid;
     row-gap: $spacer * 1.25;
@@ -26,12 +36,16 @@ $contact-us-form-submit-border-radius:  $contact-us-form-border-radius;
     border-radius: $contact-us-form-border-radius;
     border: none;
     min-height: $contact-us-form-input-min-height;
-
-    text-indent: $spacer * 1.25;
+    padding: $spacer * .5 0 $spacer * .5 $spacer * 1.25;
 
     &::placeholder {
       @include style-text-node("19px", "23px", $contact-us-form-input-color, $font-weight-extra-light);
-      padding: $spacer * .5 0 $spacer * .5;
+    }
+
+    &:focus {
+      outline: none;
+      border: none;
+      box-shadow: $contact-us-form-box-shadow;
     }
   }
 

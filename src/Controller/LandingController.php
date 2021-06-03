@@ -19,10 +19,12 @@ class LandingController extends AbstractController
      */
     public function index(BlocksForLandingPage $blocks, Request $request): Response
     {
+        $page = self::IDENTIFIER;
+
         $navbar = $blocks->getNavbar();
         $advantages = $blocks->getAdvantages();
         $map = $blocks->getMap();
-        $footer = $blocks->getFooterWithFormGenerator();
+        $footer = $blocks->getFooterWithFormGenerator($page);
         $activities = $blocks->getActivities();
 
         return $this->render('landing/index.html.twig', [
@@ -31,7 +33,7 @@ class LandingController extends AbstractController
             $navbar->getIdentifier() => $navbar->getNavbarWithBanner(),
             $advantages->getIdentifier() => $advantages->getAdvantagesBlocks(),
             $map->getIdentifier() => $map->getOfficesForMap(),
-            $footer->getIdentifier() => $footer->getFooterWithForm($activities->getActivities(), self::IDENTIFIER),
+            $footer->getIdentifier() => $footer->getFooterWithForm($activities->getActivities(), $page),
         ]);
     }
 }

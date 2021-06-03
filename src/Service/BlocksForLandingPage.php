@@ -8,6 +8,10 @@ use App\Controller\ContactUsController;
 
 class BlocksForLandingPage
 {
+    const COPY_TO = [
+        'landing' => 'info@example.com',
+    ];
+
     private NavbarWithBannerGenerator $navbar;
     private AdvantagesGenerator $advantages;
     private MapGenerator $map;
@@ -76,17 +80,17 @@ class BlocksForLandingPage
     /**
      * @return FooterWithFormGenerator
      */
-    public function getFooterWithFormGenerator(): FooterWithFormGenerator
+    public function getFooterWithFormGenerator(string $page): FooterWithFormGenerator
     {
+        $this->form->setHeader($page);
+        $this->form->setCaption($page);
+        $this->form->setCopyto($this->getCopyToParamForPage($page));
+
         return $this->footerWithFormGenerator;
     }
 
-    /**
-     * @return ContactUsController
-     */
-    public function getForm(): ContactUsController
+    protected function getCopyToParamForPage(string $page)
     {
-        return $this->form;
+        return self::COPY_TO[$page];
     }
-
 }

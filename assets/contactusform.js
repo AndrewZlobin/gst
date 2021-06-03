@@ -51,7 +51,11 @@ document.getElementById('contact_us_form').addEventListener("submit", (e) => {
     changeElementIsHiddenAttribute(contactUsContainer);
     // Opened
     if (XHR.readyState === getHttpRequestStatuses().opened) {
+        // TODO Need refactor
         changeSpinnerColor('custom-yellow', 'secondary');
+        changeSpinnerColor('info', 'secondary');
+        changeSpinnerColor('danger', 'secondary');
+        changeSpinnerColor('success', 'secondary');
         changeElementIsHiddenAttribute(contactUsResult);
         contactUsResult.textContent = getStatusFromElement(getHttpRequestStatuses().opened);
     }

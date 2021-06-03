@@ -5,10 +5,7 @@
 {% block wrappercontent %}
     <div class="footer-with-form-container">
         <div class="footer-with-form-container__form">
-            {{ render(controller('App\\Controller\\ContactUsController::new', {
-                'header': footer.formdata.header,
-                'caption': footer.formdata.caption
-            })) }}
+            {{ render(controller('App\\Controller\\ContactUsController::contact')) }}
         </div>
         <div class="footer-with-form-container__info">
             <div class="footer-with-form-container__contacts">
