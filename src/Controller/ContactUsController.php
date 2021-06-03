@@ -2,16 +2,19 @@
 
 namespace App\Controller;
 
-use App\Form\ContactUsType;
+use App\Form\Type\ContactUsType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\Extension\Core\Type\HiddenType;
+use Symfony\Component\Form\FormInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Mailer\Exception\TransportExceptionInterface;
 use Symfony\Component\Mailer\MailerInterface;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Validator\Validator\ValidatorInterface;
 use Symfony\Contracts\Translation\TranslatorInterface;
 use Symfony\Bridge\Twig\Mime\TemplatedEmail;
+use Symfony\Component\HttpFoundation\JsonResponse;
 
 class ContactUsController extends AbstractController
 {
@@ -65,7 +68,7 @@ class ContactUsController extends AbstractController
     }
 
     /**
-     * @param mixed $header
+     * @param string $page
      */
     public function setHeader(string $page): void
     {
@@ -83,7 +86,7 @@ class ContactUsController extends AbstractController
     }
 
     /**
-     * @param mixed $caption
+     * @param $page
      */
     public function setCaption($page): void
     {
@@ -122,11 +125,18 @@ class ContactUsController extends AbstractController
 
         $form->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()) {
-            try {
-                $this->convertToEmail((object)$form->getData());
-            } catch (TransportExceptionInterface $e) {
-                return new Response($e->getMessage(), Response::HTTP_BAD_REQUEST);
+        if ($form->isSubmitted()) {
+
+            if (!$form->isValid()) {
+                return $this->validate($form);
+            }
+
+            if ($form->isValid()) {
+                try {
+                    $this->convertToEmail((object)$form->getData());
+                } catch (TransportExceptionInterface $e) {
+                    return new Response($e->getMessage(), Response::HTTP_BAD_REQUEST);
+                }
             }
         }
 
@@ -176,5 +186,25 @@ class ContactUsController extends AbstractController
             }
         }
         return $translatedstatuses;
+    }
+
+    public function validate(FormInterface $form): Response
+    {
+        $formerrors = [];
+
+        foreach (array_keys((array)$form->getData()) as $formfield) {
+            $formerrors[$formfield] = $form->get($formfield)->getErrors()->count()
+                ? $form->get($formfield)->getErrors()->getChildren()->getMessage()
+                : null;
+        }
+
+        unset($formerrors[self::COPY_TO_IDENTIFIER]);
+
+        $response = new JsonResponse();
+        $response->setData($formerrors);
+        $response->setEncodingOptions(JsonResponse::DEFAULT_ENCODING_OPTIONS);
+        $response->setStatusCode(Response::HTTP_UNSUPPORTED_MEDIA_TYPE);
+
+        return $response;
     }
 }

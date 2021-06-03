@@ -2,7 +2,8 @@
 <div class="contact-us-form__caption">{{ formcaption }}</div>
 {{ form_start(form, {'attr': {
     'class': 'contact-us-form__form mb-4',
-    'id': 'contact_us_form'
+    'id': 'contact_us_form',
+    'novalidate': 'novalidate'
 }}) }}
     {{ form_row(form.fullname) }}
     {{ form_row(form.email) }}
@@ -10,6 +11,7 @@
     {{ form_row(form.theme) }}
     {{ form_row(form.message) }}
     {{ form_row(form.submit) }}
+
 {{ form_end(form) }}
 <div class="contact-us-form__status d-flex align-items-center" data-ishidden="true">
     <div class="mr-4">

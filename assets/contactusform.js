@@ -34,6 +34,29 @@ changeSpinnerColor = (defaultColor, newColor) => {
     }
 }
 
+hideErrorContainer = (container) => {
+    container.classList.add('d-none');
+    container.classList.remove('text-danger');
+    container.textContent = '';
+};
+
+showErrorContainer = (container, message) => {
+    container.classList.remove('d-none');
+    container.classList.add('text-danger');
+    container.textContent = message;
+};
+
+validateForm = (errors, form) => {
+    for (const errorKey in errors) {
+        if (errors.hasOwnProperty(errorKey)) {
+            let containerForError = document.querySelector(`[for="${form.name}_${errorKey}"]`);
+            errors[errorKey] === null
+                ? hideErrorContainer(containerForError)
+                : showErrorContainer(containerForError, errors[errorKey]);
+        }
+    }
+};
+
 let contactUsContainer = document.getElementsByClassName('contact-us-form__status')[0];
 let contactUsResult = document.getElementsByClassName('contact-us-form__result')[0];
 
@@ -68,20 +91,29 @@ document.getElementById('contact_us_form').addEventListener("submit", (e) => {
         }
     }
 
+    let canSendData = false;
     // Done (success or error)
     XHR.onload = () => {
         if (XHR.readyState === 4) {
             if (XHR.status === 400) {
                 changeSpinnerColor('info', 'danger');
                 contactUsResult.textContent = getStatusFromElement(getHttpRequestStatuses().done, 'true');
+            } else if (XHR.status === 415) {
+                changeSpinnerColor('info', 'danger');
+                validateForm(JSON.parse(XHR.response), e.target);
+                contactUsResult.textContent = getStatusFromElement(getHttpRequestStatuses().done, 'true');
             } else {
                 changeSpinnerColor('info', 'success');
                 contactUsResult.textContent = getStatusFromElement(getHttpRequestStatuses().done, 'false');
+                canSendData = true;
             }
         }
     };
 
     XHR.send(formData);
 
-    e.target.reset();
+    if (canSendData) {
+        e.target.reset();
+    }
+
 });

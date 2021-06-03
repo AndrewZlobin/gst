@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Form;
+namespace App\Form\Type;
 
+use App\Entity\ContactUs;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
@@ -9,18 +10,10 @@ use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Symfony\Contracts\Translation\TranslatorInterface;
 
 class ContactUsType extends AbstractType
 {
     const TEXT_AREA_COLS = 10;
-
-    private TranslatorInterface $translator;
-
-    public function __construct(TranslatorInterface $translator)
-    {
-        $this->translator = $translator;
-    }
 
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
@@ -42,7 +35,7 @@ class ContactUsType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            // Configure your form options here
+            'data_class' => ContactUs::class,
         ]);
     }
 
@@ -51,7 +44,6 @@ class ContactUsType extends AbstractType
         $params = [
             'attr' => [
                 'class' => "contact-us-form__field contact-us-form__$field",
-//                'placeholder' => $this->translator->trans("form.placeholders.${field}"),
                 'placeholder' => $field,
             ],
             'label' => $field,
