@@ -74,18 +74,20 @@ activities:
   construction equipment rental:
     title: Аренда строительной техники
     description: Собственный парк строительной техники, автотранспорта, специализированное оборудование для сварочных работ и доставка арендованной техники заказчику в любой регион оптимальным путем.
+# Contact us Form
+fullname: ФИО
+email: E-mail
+phone: Телефон
+theme: Тема
+message: Сообщение
+Submit: Отправить
 form:
-  landing:
-    header: По вопросам сотрудничества
-    caption: Если у Вас есть вопросы по сотрудничеству, напишите нам.
-  placeholders:
-    fullname: ФИО
-    email: E-mail
-    phone: Телефон
-    theme: Тема
-    message: Сообщение
   statuses:
     opened: Письмо отправляется
     loading: Почти готово
     sent: Письмо отправлено. С Вами свяжутся в ближайшее время
     error: Письмо отправить не удалось. Попробуйте повторить попытку
+  # Form params for different pages
+  landing:
+    header: По вопросам сотрудничества
+    caption: Если у Вас есть вопросы по сотрудничеству, напишите нам.

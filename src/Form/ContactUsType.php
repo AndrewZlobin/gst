@@ -34,7 +34,7 @@ class ContactUsType extends AbstractType
                 'attr' => [
                     'class' => 'contact-us-form__submit btn btn-block'
                 ],
-                'label' => 'Отправить'
+                'label' => 'Submit'
             ])
         ;
     }
@@ -51,7 +51,8 @@ class ContactUsType extends AbstractType
         $params = [
             'attr' => [
                 'class' => "contact-us-form__field contact-us-form__$field",
-                'placeholder' => $this->translator->trans("form.placeholders.${field}"),
+//                'placeholder' => $this->translator->trans("form.placeholders.${field}"),
+                'placeholder' => $field,
             ],
             'label' => $field,
             'label_attr' => [
