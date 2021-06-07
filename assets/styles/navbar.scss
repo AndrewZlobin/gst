@@ -29,6 +29,9 @@
     // TODO May be not needed
     &:hover {
       color: map-get($theme-colors, "custom-yellow");
+      text-decoration: underline;
+      text-decoration-color: map-get($theme-colors, "custom-yellow");
+      text-underline-position: under;
     }
   }
 

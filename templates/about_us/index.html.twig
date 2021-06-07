@@ -8,6 +8,8 @@
 {% block title %}{{ pagetitle }}{% endblock %}
 
 {% block content %}
+    {{  include('components/_subheader.html.twig') }}
+    {{  include('components/_companyreferences.html.twig') }}
 {% endblock %}
 
 {% block footer %}

@@ -26,12 +26,18 @@ class AboutUsController extends AbstractController
     public function index(BlocksForAboutUsPage $blocks): Response
     {
         $page = self::IDENTIFIER;
+
         $navbar = $blocks->getNavbar();
+        $subheader = $blocks->getSubheader();
+        $companyreference = $blocks->getCompanyreference();
+        dump($companyreference->getReference());
 
         return $this->render('about_us/index.html.twig', [
             'pagetitle' => $this->translator->trans("pages.${page}"),
             'extracontainerclasses' => self::WRAPPER_CLASS,
             $navbar->getIdentifier() => $navbar->getNavbar(),
+            $subheader->getIdentifier() => $subheader->getSubHeader($page),
+            $companyreference->getIdentifier() => $companyreference->getReference(),
         ]);
     }
 }
