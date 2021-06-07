@@ -1,0 +1,37 @@
+{% extends 'components/_wrapper.html.twig' %}
+{% if footer.footercontent.extracontainerclasses is defined %}
+    {% set extracontainerclasses = footer.extracontainerclasses %}
+{% endif %}
+{% block wrappercontent %}
+    <div class="footer-with-form-container">
+        <div class="footer-with-form-container__form">
+            {{ render(controller('App\\Controller\\ContactUsController::contact')) }}
+        </div>
+        <div class="footer-with-form-container__info">
+            <div class="footer-with-form-container__contacts">
+                {% for block in footer.blocks %}
+                    {% if block.caption is not defined %}
+                        {% set imgsrc = 'build/icons/' ~ block.icon ~ '.svg' %}
+                        <div class="footer-with-form-container__contact d-flex align-items-center">
+                            <img class="footer-with-form-container__icon mr-4" src="{{ absolute_url(asset(imgsrc)) }}">
+                            <span class="footer-with-form-container__description">{{ block.title }}</span>
+                        </div>
+                    {% endif %}
+                {% endfor %}
+            </div>
+            <div class="footer-with-form-container__offices-title">
+                {{ footer.officestitle }}
+            </div>
+            <div class="footer-with-form-container__offices">
+                {% for office in footer.offices %}
+                    {% set mapimgsrc = 'build/icons/' ~ office.icon ~ '.svg' %}
+                    <div class="footer-with-form-container__office">
+                        <img class="footer-with-form-container__pin" src="{{ absolute_url(asset(mapimgsrc)) }}">
+                        <div class="footer-with-form-container__header">{{ office.header }}</div>
+                        <div class="footer-with-form-container__caption">{{ office.caption }}</div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,89 @@
+$contact-us-form-border-radius: $border-radius * 2;
+$contact-us-form-background:    #EAEAEA;
+$contact-us-form-box-shadow:    0px 4px 8px rgba(0, 0, 0, 0.15);
+
+$contact-us-form-input-min-height:  40px;
+$contact-us-form-input-color:       rgba(18, 44, 80, 0.66);
+
+$contact-us-form-submit-background:     linear-gradient(92.08deg, #E8AB10 -3.35%, #E9B95D 111.73%);
+$contact-us-form-submit-box-shadow:     4px 7px 20px 6px rgba(0, 0, 0, 0.14);
+$contact-us-form-submit-border-radius:  $contact-us-form-border-radius;
+
+.contact-us-form {
+  &__header {
+    @include style-text-node("29px", "35px", map-get($theme-colors, "map-card-text"), $font-weight-bold);
+    margin-bottom: $spacer * 1.25;
+  }
+
+  &__caption {
+    @include style-text-node("19px", "23px", map-get($theme-colors, "map-card-text"), $font-weight-light);
+    margin-bottom: $spacer * 1.5;
+  }
+
+  &__form {
+    display: grid;
+    row-gap: $spacer * 1.25;
+  }
+
+  &__container {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+
+  &__field {
+    background: $contact-us-form-background;
+    box-shadow: $contact-us-form-box-shadow;
+    border-radius: $contact-us-form-border-radius;
+    border: none;
+    min-height: $contact-us-form-input-min-height;
+    padding: $spacer * .5 0 $spacer * .5 $spacer * 1.25;
+
+    &::placeholder {
+      @include style-text-node("19px", "23px", $contact-us-form-input-color, $font-weight-extra-light);
+    }
+
+    &:focus {
+      outline: none;
+      border: none;
+      box-shadow: $contact-us-form-box-shadow;
+    }
+  }
+
+  &__message {
+    min-height: auto;
+  }
+
+  &__submit {
+    color: $white;
+    text-align: center;
+    background: $contact-us-form-submit-background;
+    box-shadow: $contact-us-form-submit-box-shadow;
+    border-radius: $contact-us-form-submit-border-radius;
+  }
+
+  &__status {
+    &[data-ishidden="true"] {
+      opacity: 0;
+    }
+
+    &[data-ishidden="false"] {
+      opacity: 1;
+      transition: opacity .25s;
+    }
+  }
+
+  &__opened,
+  &__loading,
+  &__sent,
+  &__error,
+  &__result {
+    &[data-ishidden="true"] {
+      opacity: 0;
+    }
+
+    &[data-ishidden="false"] {
+      opacity: 1;
+      transition: opacity .4s;
+    }
+  }
+}

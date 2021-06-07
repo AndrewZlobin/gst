@@ -1,0 +1,42 @@
+.navbar-header {
+  &__text {
+    @include style-text-node($navbar-header-font-size, $navbar-header-line-height, $white, $font-weight-regular);
+  }
+}
+
+.navbar-banner {
+  background: url("/assets/img/landing_bg.png") no-repeat;
+  background-size: cover;
+  height: $navbar-banner-height;
+  margin-bottom: $navbar-banner-margin-bottom;
+}
+
+.navbar-with-banner {
+  &__menu {
+    margin-bottom: $navbar-with-banner-margin-bottom;
+  }
+
+  &__link {
+    @include style-text-node($navbar-link-font-size, $navbar-link-line-height, $white, $font-weight-regular);
+
+    // TODO May be not needed
+    &:hover {
+      color: map-get($theme-colors, "custom-yellow");
+    }
+  }
+
+  &__header {
+    @include style-text-node($navbar-with-banner-header-font-size, $navbar-with-banner-header-line-height, $white, $font-weight-bold);
+  }
+
+  &__caption {
+    @include style-text-node($navbar-with-banner-caption-font-size, $navbar-with-banner-caption-line-height, $white, $font-weight-medium);
+  }
+
+  &__button {
+    background: $navbar-with-banner-button-color;
+    padding: $spacer $spacer * 2;
+    @include style-text-node($navbar-with-banner-button-font-size, $navbar-with-banner-button-line-height, $white, $font-weight-medium);
+    @include box-shadow($btn-box-shadow);
+  }
+}

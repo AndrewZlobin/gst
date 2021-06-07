@@ -1,0 +1,190 @@
+@import "./assets/styles/app";
+@import "./assets/styles/custom-variables";
+@import "./assets/styles/custom-mixins";
+@import "./assets/styles/navbar";
+@import "./assets/styles/map";
+@import "./assets/styles/footer";
+@import "./assets/styles/form";
+
+$landing-header-font-size:        32px;
+$landing-header-line-height:      39px;
+$landing-header-margin-bottom:    72px;
+
+$landing-block-advantages-bottom-offset:    130px;
+
+$landing-advantages-row-gap:        $spacer * 4.125; //66px
+$landing-advantages-column-gap:     $spacer;// 16px
+$landing-advantages-block-width:    325px;
+
+$landing-advantage-row-gap:       $spacer * .25;// 4px
+$landing-advantage-column-gap:    $spacer * .75;// 12px
+
+$landing-advantage-title-font-size:     16px;
+$landing-advantage-title-line-height:   20px;
+
+$landing-advantage-message-font-size:     14px;
+$landing-advantage-message-line-height:   17px;
+
+$landing-advantage-image-scale:   88px;
+
+$landing-activities-grid-min-width:       263px;
+$landing-activities-empty-space-height:   120px;
+
+$landing-activity-grid-template-rows:     201px calc(72px + #{$spacer}) calc(60px + #{$spacer}) max-content;
+$landing-activity-box-shadow:             7px 10px 29px -2px rgba(0, 0, 0, 0.17);
+$landing-activity-title-background-color: map-get($theme-colors, "map-card-text");
+$landing-activity-description-color:      map-get($theme-colors, "map-card-text");
+
+.landing-header {
+  @include style-text-node(
+                  $landing-header-font-size,
+                  $landing-header-line-height,
+                  map-get($theme-colors, "custom-header-dark"),
+                  $font-weight-bold
+  );
+  margin-bottom: $landing-header-margin-bottom;
+}
+
+.block {
+  &-advantages {
+    margin-bottom: $landing-block-advantages-bottom-offset;
+  }
+}
+
+.landing-advantages {
+  display: grid;
+  grid-auto-rows: 1fr;
+  gap: $landing-advantages-row-gap $landing-advantages-column-gap;
+  grid-template-columns: repeat(auto-fit, minmax($landing-advantages-block-width, .33fr));
+
+  @include media-breakpoint-down(lg) {
+    grid-template-columns: repeat(auto-fit, minmax($landing-advantages-block-width * .8, .33fr));
+  }
+
+  @include media-breakpoint-down(md) {
+    grid-template-columns: repeat(auto-fit, minmax($landing-advantages-block-width * .8, .5fr));
+    gap: $spacer * 2 $landing-advantages-column-gap;
+  }
+
+  @include media-breakpoint-down(sm) {
+    grid-template-columns: repeat(auto-fit, minmax(calc(#{$landing-advantages-block-width * .6} + #{$spacer * 1.25}), 1fr));
+  }
+}
+
+.landing-advantage {
+  display: grid;
+  grid-template-areas:
+          "advantageimage advantagetitle"
+          "advantageimage advantagemessage";
+  grid-template-columns: 0.25fr 0.75fr;
+  grid-template-rows: 0.1fr 0.9fr;
+  gap: $landing-advantage-row-gap $landing-advantage-column-gap;
+
+  &__img {
+    grid-area: advantageimage;
+    max-width: $landing-advantage-image-scale;
+    max-height: $landing-advantage-image-scale;
+
+    justify-self: flex-end;
+    @include media-breakpoint-down(sm) {
+      justify-self: flex-start;
+    }
+  }
+
+  &__title {
+    grid-area: advantagetitle;
+    @include style-text-node(
+                    $landing-advantage-title-font-size,
+                    $landing-advantage-title-line-height,
+                    map-get($theme-colors, "custom-text-dark"),
+                    $font-weight-semi-bold
+    );
+  }
+
+  &__message {
+    grid-area: advantagemessage;
+    @include style-text-node(
+                    $landing-advantage-message-font-size,
+                    $landing-advantage-message-line-height,
+                    map-get($theme-colors, "custom-text-dark"),
+                    $font-weight-light
+    );
+
+    @include media-breakpoint-down(sm) {
+      br {
+        display: none;
+      }
+    }
+  }
+}
+
+.landing-activities {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax($landing-activities-grid-min-width, 1fr));
+  gap: $spacer * 2;
+
+  &__container {
+    padding-bottom: $landing-activities-empty-space-height;
+  }
+}
+
+.landing-activity {
+  display: grid;
+  box-shadow: $landing-activity-box-shadow;
+  grid-template-rows: $landing-activity-grid-template-rows;
+
+  @include media-breakpoint-down(sm) {
+    grid-template-columns: .5fr .5fr;
+    grid-template-rows: 1fr auto min-content;
+  }
+
+  @include media-breakpoint-down(xs) {
+    grid-template-rows: $landing-activity-grid-template-rows;
+    grid-template-columns: auto;
+  }
+
+  &__title {
+    @include style-text-node("18px", "22px", $white, $font-weight-semi-bold);
+    background-color: $landing-activity-title-background-color;
+  }
+
+  &__description {
+    @include style-text-node("11px", "13px", $landing-activity-description-color, $font-weight-extra-light);
+
+    @include media-breakpoint-down(sm) {
+      grid-row: 2;
+      grid-column: span 2;
+    }
+
+    @include media-breakpoint-down(sm) {
+      grid-row: 3;
+      grid-column: 1;
+    }
+  }
+
+  &__actions {
+    &:hover {
+      .landing-activity__button {
+        text-decoration: underline;
+      }
+    }
+
+    @include media-breakpoint-down(sm) {
+      grid-row: 3;
+      grid-column: span 2;
+    }
+
+    @include media-breakpoint-down(sm) {
+      grid-row: 4;
+      grid-column: 1;
+    }
+  }
+
+  &__button {
+    @include style-text-node("11px", "13px", map-get($theme-colors, "custom-yellow"), $font-weight-bold);
+  }
+
+  &__icon {
+    @include style-icon("9px", "9px", "9px", map-get($theme-colors, "custom-yellow"));
+  }
+}

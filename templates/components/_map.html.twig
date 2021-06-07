@@ -1,0 +1,19 @@
+{% extends 'components/_wrapper.html.twig' %}
+{% if advantages.extracontainerclasses is defined %}
+    {% set extracontainerclasses = advantages.extracontainerclasses %}
+{% endif %}
+{% block wrappercontent %}
+    <div class="col">
+        <h1 class="landing-header">{{ offices.header|raw }}</h1>
+        <div data-mapsdata="true" class="d-none">
+            {% for office in offices.points %}
+                <div data-name="{{ office.name }}"
+                     data-caption="{{ office.caption }}"
+                     data-latitude="{{ office.latitude }}"
+                     data-longitude="{{ office.longitude }}"
+                     data-imagefilename="{{ office.image }}"></div>
+            {% endfor %}
+        </div>
+        <div id="map-container" class="map-container"></div>
+    </div>
+{% endblock %}

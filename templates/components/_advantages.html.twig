@@ -1,0 +1,20 @@
+{% extends 'components/_wrapper.html.twig' %}
+{% if advantages.extracontainerclasses is defined %}
+    {% set extracontainerclasses = advantages.extracontainerclasses %}
+{% endif %}
+{% block wrappercontent %}
+    <div class="col">
+        <h1 class="landing-header">{{ advantages.header|raw }}</h1>
+    </div>
+    <div class="landing-advantages col">
+        {% for advantage in advantages.blocks %}
+            {#Image src variable for each advantage#}
+            {% set imgsrc = 'build/img/' ~ advantage.image ~ '.png' %}
+            <div class="landing-advantage">
+                <img class="landing-advantage__img" src="{{ absolute_url(asset(imgsrc)) }}">
+                <div class="landing-advantage__title">{{ advantage.title|upper }}</div>
+                <div class="landing-advantage__message">{{ advantage.message|raw }}</div>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}
