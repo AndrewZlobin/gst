@@ -1,3 +1,12 @@
+# Pages
+pages:
+  landing: Главная
+  about_us: О нас
+  main_activities: Виды деятельности
+  construction_and_installation: Строительно-монтажные работы
+  design_and_survey: Проектно-изыскательские работы
+  complex_supplies: Комплексные поставки материально-технических ресурсов
+  construction_equipment_rental: Аренда строительной техники
 navbar:
   phone: 8(499)705-14-88
   email: info@gazstroytech.ru

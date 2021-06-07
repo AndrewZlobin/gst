@@ -8,11 +8,19 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Contracts\Translation\TranslatorInterface;
 
 class LandingController extends AbstractController
 {
     const IDENTIFIER = 'landing';
     const WRAPPER_CLASS = 'bg-custom-dark';
+
+    private TranslatorInterface $translator;
+
+    public function __construct(TranslatorInterface $translator)
+    {
+        $this->translator = $translator;
+    }
 
     /**
      * @Route("/", name="landing")
@@ -28,7 +36,7 @@ class LandingController extends AbstractController
         $activities = $blocks->getActivities();
 
         return $this->render('landing/index.html.twig', [
-            'controller_name' => 'LandingController',
+            'pagetitle' => $this->translator->trans("pages.${page}"),
             'extracontainerclasses' => self::WRAPPER_CLASS,
             $navbar->getIdentifier() => $navbar->getNavbarWithBanner(),
             $advantages->getIdentifier() => $advantages->getAdvantagesBlocks(),
