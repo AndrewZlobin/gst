@@ -163,6 +163,12 @@ $landing-activity-description-color:      map-get($theme-colors, "map-card-text"
   }
 
   &__actions {
+    &:hover {
+      .landing-activity__button {
+        text-decoration: underline;
+      }
+    }
+
     @include media-breakpoint-down(sm) {
       grid-row: 3;
       grid-column: span 2;

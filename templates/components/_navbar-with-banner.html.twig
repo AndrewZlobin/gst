@@ -17,7 +17,7 @@
             <div class="col-6 col-md-8 d-flex align-items-end flex-wrap flex-md-nowrap">
                 {% for link in navbar.links %}
                     {% if link.renderinlogo is not defined %}
-                        <a class="navbar-with-banner__link nav-link" href="#">{{ link.title|upper }}</a>
+                        <a class="navbar-with-banner__link nav-link" href="{{ link.href }}">{{ link.title|upper }}</a>
                     {% endif %}
                 {% endfor %}
             </div>
@@ -26,7 +26,8 @@
             <div class="col-10 col-sm-8 col-md-6 col-lg-4">
                 <h1 class="navbar-with-banner__header mb-7">{{ navbar.banner.header }}</h1>
                 <h3 class="navbar-with-banner__caption mb-7">{{ navbar.banner.caption }}</h3>
-                <a href="#" class="navbar-with-banner__button btn">{{ navbar.banner.button }}</a>
+                <a href="{{ navbar.banner.link }}"
+                   class="navbar-with-banner__button btn">{{ navbar.banner.button }}</a>
             </div>
         </div>
     </div>

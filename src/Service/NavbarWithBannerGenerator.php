@@ -3,6 +3,7 @@
 
 namespace App\Service;
 
+use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 use Symfony\Contracts\Translation\TranslatorInterface;
 
 class NavbarWithBannerGenerator
@@ -12,11 +13,15 @@ class NavbarWithBannerGenerator
 
     private NavbarGenerator $navbar;
     private TranslatorInterface $translator;
+    private UrlGeneratorInterface $router;
 
-    public function __construct(NavbarGenerator $navbar, TranslatorInterface $translator)
+    public function __construct(NavbarGenerator $navbar,
+                                TranslatorInterface $translator,
+                                UrlGeneratorInterface $router)
     {
         $this->navbar = $navbar;
         $this->translator = $translator;
+        $this->router = $router;
     }
 
     public function getIdentifier(): string
@@ -39,6 +44,7 @@ class NavbarWithBannerGenerator
             'header' => $this->translator->trans('navbar.header'),
             'caption' => $this->translator->trans('navbar.caption'),
             'button' => $this->translator->trans('navbar.button'),
+            'link' => $this->router->generate($this->navbar::ABOUT_US),
         ];
     }
 }

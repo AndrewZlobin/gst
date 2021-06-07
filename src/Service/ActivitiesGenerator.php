@@ -19,10 +19,13 @@ class ActivitiesGenerator
     ];
 
     private TranslatorInterface $translator;
+    private NavbarGenerator $navbar;
 
-    public function __construct(TranslatorInterface $translator)
+    public function __construct(TranslatorInterface $translator,
+                                NavbarGenerator $navbar)
     {
         $this->translator = $translator;
+        $this->navbar = $navbar;
     }
 
     public function getIdentifier(): string
@@ -61,6 +64,7 @@ class ActivitiesGenerator
             $activities[$activity]['image'] = $image;
             $activities[$activity]['title'] = $title;
             $activities[$activity]['description'] = $description;
+            $activities[$activity]['link'] = $this->navbar->getMainActivitiesSubLinks()[$activity];
         }
 
         return $activities;

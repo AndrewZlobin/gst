@@ -13,10 +13,10 @@
                     <img class="landing-activity__image img-fluid w-100" src="{{ imgsrc }}" alt="{{ activity.title }}">
                     <div class="landing-activity__title px-1 py-2">{{ activity.title }}</div>
                     <div class="landing-activity__description px-1 py-1">{{ activity.description }}</div>
-                    <div class="landing-activity__actions d-flex align-items-center">
+                    <a href="{{ activity.link }}" class="landing-activity__actions d-flex align-items-center text-decoration-none">
                         <div class="landing-activity__button px-1 py-2">{{ footer.footercontent.moredetailes }}</div>
                         <img class="landing-activity__icon" src="{{ absolute_url(asset('build/icons/arrow_right.svg')) }}">
-                    </div>
+                    </a>
                 </div>
             {% endfor %}
         </div>

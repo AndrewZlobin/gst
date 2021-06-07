@@ -11,7 +11,7 @@ class MainActivitiesController extends AbstractController
     /**
      * @Route("/main_activities/{type}", name="main_activities")
      */
-    public function index(string $type): Response
+    public function index(string $type = ''): Response
     {
 //        construction_and_installation
 //        design_and_survey
