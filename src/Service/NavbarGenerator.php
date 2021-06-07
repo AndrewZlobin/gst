@@ -8,6 +8,9 @@ use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 
 class NavbarGenerator
 {
+    const IDENTIFIER = 'navbar';
+    const WRAPPER_CLASS = 'navbar-banner';
+
     const LANDING = 'landing';
     const ABOUT_US = 'about_us';
     const MAIN_ACTIVITIES = 'main_activities';
@@ -28,9 +31,15 @@ class NavbarGenerator
         $this->router = $router;
     }
 
+    public function getIdentifier(): string
+    {
+        return self::IDENTIFIER;
+    }
+
     public function getNavbar(): array
     {
         return [
+            'extracontainerclasses' => self::WRAPPER_CLASS,
             'header' => $this->getNavbarHeader(),
             'links' => $this->getTranslatedNavbarLinks()
         ];

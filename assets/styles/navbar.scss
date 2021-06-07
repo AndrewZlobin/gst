@@ -11,7 +11,14 @@
   margin-bottom: $navbar-banner-margin-bottom;
 }
 
-.navbar-with-banner {
+.navbar-no-banner {
+  background: url("/assets/img/navbar_bg.png") map-get($theme-colors, "navbar-bg-color") no-repeat;
+  background-size: cover;
+  box-shadow: $navbar-no-banner-box-shadow;
+}
+
+.navbar-with-banner,
+.navbar-no-banner {
   &__menu {
     margin-bottom: $navbar-with-banner-margin-bottom;
   }
@@ -38,5 +45,12 @@
     padding: $spacer $spacer * 2;
     @include style-text-node($navbar-with-banner-button-font-size, $navbar-with-banner-button-line-height, $white, $font-weight-medium);
     @include box-shadow($btn-box-shadow);
+  }
+}
+
+.navbar-no-banner {
+  &__menu {
+    padding-bottom: $navbar-no-banner-padding-bottom;
+    margin-bottom: $navbar-no-banner-margin-bottom;
   }
 }
