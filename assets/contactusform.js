@@ -57,11 +57,29 @@ validateForm = (errors, form) => {
     }
 };
 
+resetForm = (form) => {
+    let formInputs = document.querySelectorAll('.contact-us-form__field');
+    formInputs.forEach((formInput) => {
+        formInput.previousElementSibling.for = formInput.placeholder;
+
+        if (!formInput.previousElementSibling.classList.contains('d-none')) {
+            formInput.previousElementSibling.classList.add('d-none');
+        }
+    });
+
+    form.reset();
+};
+
 let contactUsContainer = document.getElementsByClassName('contact-us-form__status')[0];
 let contactUsResult = document.getElementsByClassName('contact-us-form__result')[0];
+let contactUsSubmit = document.getElementById('contact_us_submit');
 
 document.getElementById('contact_us_form').addEventListener("submit", (e) => {
     e.preventDefault();
+
+    // Disable button till end of email sending
+    contactUsSubmit.disabled = true;
+
     const XHR = new XMLHttpRequest();
 
     const formMethod = e.target.method;
@@ -95,6 +113,9 @@ document.getElementById('contact_us_form').addEventListener("submit", (e) => {
     // Done (success or error)
     XHR.onload = () => {
         if (XHR.readyState === 4) {
+            // Make button enabled again
+            contactUsSubmit.disabled = false;
+
             if (XHR.status === 400) {
                 changeSpinnerColor('info', 'danger');
                 contactUsResult.textContent = getStatusFromElement(getHttpRequestStatuses().done, 'true');
@@ -105,15 +126,12 @@ document.getElementById('contact_us_form').addEventListener("submit", (e) => {
             } else {
                 changeSpinnerColor('info', 'success');
                 contactUsResult.textContent = getStatusFromElement(getHttpRequestStatuses().done, 'false');
-                canSendData = true;
+
+                resetForm(e.target);
             }
         }
     };
 
     XHR.send(formData);
-
-    if (canSendData) {
-        e.target.reset();
-    }
 
 });

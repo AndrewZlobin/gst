@@ -1,0 +1,7 @@
+fullname.not_blank: Поле "ФИО" не может быть пустым.
+email.not_blank: Поле "E-mail" не может быть пустым.
+email.wrong_format: E-mail указана неверно.
+phone.not_blank: Поле "Телефон" не может быть пустым
+phone.wrong_format: Телефон указан неверно
+theme.not_blank: Поле "Тема" не может быть пустым
+message.not_blank: Поле "Сообщение" не может быть пустым
