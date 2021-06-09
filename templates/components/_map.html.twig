@@ -3,7 +3,7 @@
     {% set extracontainerclasses = advantages.extracontainerclasses %}
 {% endif %}
 {% block wrappercontent %}
-    <div class="col">
+    <div class="col px-0">
         <h1 class="landing-header">{{ offices.header|raw }}</h1>
         <div data-mapsdata="true" class="d-none">
             {% for office in offices.points %}
