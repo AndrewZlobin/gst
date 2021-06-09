@@ -33,7 +33,8 @@ class SubHeadersGenerator
             'header' => $this->translator->trans("subheaders.${page}"),
             'linetype' => empty($linetype)
                 ? self::TYPE_UNDERLINE
-                : self::TYPE_LEFT
+                : self::TYPE_LEFT,
+            'modification' => $page
         ];
     }
 }

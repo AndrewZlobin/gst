@@ -2,11 +2,7 @@
 {% set extracontainerclasses = subheader.extracontainerclasses %}
 {% block wrappercontent %}
 {#    TODO Add special styles for page subheaders#}
-    <div class="row mx-0">
-        <div class="col">
-            <h6 class="subheader-{{ subheader.linetype }} m-0">
-                {{ subheader.header }}
-            </h6>
-        </div>
-    </div>
+    <h6 class="subheader subheader_{{ subheader.linetype }} subheader_{{ subheader.modification }}">
+        {{ subheader.header }}
+    </h6>
 {% endblock %}
