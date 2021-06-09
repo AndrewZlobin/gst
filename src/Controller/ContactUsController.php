@@ -21,8 +21,10 @@ class ContactUsController extends AbstractController
     const FORM_IDENTIFIER = 'form';
     const COPY_TO_IDENTIFIER = 'copyto';
     const TWIG_FOR_EMAIL = 'emails/new.html.twig';
-    // TODO Rewrite emails
-    const SEND_TO = 'info@box.com';
+
+    const SEND_TO = 'info@gazstroytech.ru';
+    // Copy to on 'Форма поставки' - panyuhin_ag@gazstroytech.ru
+    // Copy to on 'Our team' page - personal@gazstroytech.ru
 
     const FORM_STATUSES = [
         'opened' => [
@@ -50,7 +52,7 @@ class ContactUsController extends AbstractController
 
     protected $header;
     protected $caption;
-    protected $copyto;
+    protected string $copyto = '';
 
     public function __construct(TranslatorInterface $translator,
                                 MailerInterface $mailer)
@@ -118,10 +120,12 @@ class ContactUsController extends AbstractController
     {
         $form = $this->createForm(ContactUsType::class, null, [
             'action' => $this->generateUrl('contact_us'),
-        ])
-            ->add(self::COPY_TO_IDENTIFIER, HiddenType::class, [
+        ]);
+        if (!empty($this->copyto)) {
+            $form->add(self::COPY_TO_IDENTIFIER, HiddenType::class, [
                 'data' => $this->getCopyto(),
             ]);
+        }
 
         $form->handleRequest($request);
 
@@ -166,7 +170,7 @@ class ContactUsController extends AbstractController
             ->htmlTemplate(self::TWIG_FOR_EMAIL)
             ->context($emailcontext);
 
-        if (isset($formdata->copyto)) {
+        if (!empty($formdata->copyto)) {
             $email->cc($formdata->copyto);
         }
 

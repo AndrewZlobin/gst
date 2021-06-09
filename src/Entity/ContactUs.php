@@ -38,8 +38,5 @@ class ContactUs
      */
     public $message;
 
-    /**
-     * @Assert\NotNull
-     */
     public $copyto;
 }
