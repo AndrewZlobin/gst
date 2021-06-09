@@ -1,11 +1,11 @@
 {% extends 'components/_wrapper.html.twig' %}
 {% block wrappercontent %}
     <div class="row py-3">
-        <div class="col col-sm-6 col-md-4 col-lg-3 col-xl-2">
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2 mb-9 mb-sm-0">
             <img class="text-white mr-2" src="{{ absolute_url(asset('build/icons/phone.svg')) }}">
             <a href="tel:{{ navbar.header.phone }}" class="navbar-header__text">{{ navbar.header.phone }}</a>
         </div>
-        <div class="col col-sm-6 col-md-4 col-lg-3 col-xl-2">
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2">
             <img class="text-white mr-2" src="{{ absolute_url(asset('build/icons/email.svg')) }}">
             <a href="mailto:{{ navbar.header.email }}" class="navbar-header__text">{{ navbar.header.email }}</a>
         </div>

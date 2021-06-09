@@ -5,3 +5,116 @@
 @import "./assets/styles/map";
 @import "./assets/styles/footer";
 @import "./assets/styles/subheaders";
+
+$references-mragin-bottom-to-next-block:    82px;
+
+$references-caption-text-align:     justify;
+
+$references-directions-header-background:     linear-gradient(92.08deg, #EFC455 -3.35%, #E6AD41 111.73%);
+$references-directions-header-box-shadow:     3px 4px 7px 1px rgba(0, 0, 0, 0.25);
+$references-directions-header-letter-spacing: 0.065em;
+$references-directions-header-text-transform: uppercase;
+
+$references-directions-item-font-size:        22px;
+$references-directions-item-marker-position:  $references-directions-item-font-size / 2;
+$references-directions-item-background:       url("/assets/icons/list-marker.svg") no-repeat left $references-directions-item-marker-position;
+
+$references-message-text-align:   $references-caption-text-align;
+
+.references {
+  display: grid;
+  gap: $spacer * 3 $spacer * 4;
+  grid-template-columns: repeat(2, 1fr);
+
+  margin-bottom: $references-mragin-bottom-to-next-block;
+
+  @include  media-breakpoint-down(md) {
+    grid-template-columns: 1fr;
+  }
+
+  &__caption {
+    @include style-text-node("21px", "26px", map-get($theme-colors, "custom-header-dark"), $font-weight-regular);
+    text-align: $references-caption-text-align;
+
+    grid-row: 1;
+    grid-column: span 2;
+  }
+
+  &__direction {
+    &_header {
+      background: $references-directions-header-background;
+      box-shadow: $references-directions-header-box-shadow;
+      padding: $spacer * .25;
+
+      @include style-text-node("26px", "43px", $white, $font-weight-bold);
+      letter-spacing: $references-directions-header-letter-spacing;
+      text-transform: $references-directions-header-text-transform;
+
+      grid-row: 2;
+      grid-column: 1;
+
+      @include  media-breakpoint-down(md) {
+        grid-column: span 2;
+
+        width: fit-content;
+        width: -moz-fit-content;
+      }
+    }
+
+    &_list {
+      padding: 0;
+      margin: 0;
+
+      display: grid;
+      gap: $spacer;
+
+      grid-row: 3;
+      grid-column: 1;
+
+      @include  media-breakpoint-down(md) {
+        grid-column: span 2;
+        grid-template-columns: repeat(2, 1fr);
+
+        &[data-listkey="1"] {
+          grid-column: 1;
+        }
+      }
+
+      @include  media-breakpoint-down(sm) {
+        grid-template-columns: auto;
+      }
+    }
+
+    &_item {
+      @include style-text-node(
+                      $references-directions-item-font-size,
+                      "34px",
+                      map-get($theme-colors, "custom-header-dark"),
+                      $font-weight-regular
+      );
+      list-style: none;
+      background: $references-directions-item-background;
+      padding-left: $spacer;
+
+      &[data-listkey="1"] {
+        @include  media-breakpoint-down(md) {
+          grid-column: 1;
+          grid-row: span 3;
+        }
+      }
+    }
+  }
+
+  &__message {
+    @include style-text-node("23px", "35px", map-get($theme-colors, "custom-header-dark"), $font-weight-regular);
+    text-align: $references-message-text-align;
+
+    grid-row-start: 2;
+    grid-row: span 2;
+    grid-column: 2;
+
+    @include  media-breakpoint-down(md) {
+      grid-column: span 2;
+    }
+  }
+}
