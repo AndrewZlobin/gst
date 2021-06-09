@@ -121,7 +121,7 @@ class ContactUsController extends AbstractController
         $form = $this->createForm(ContactUsType::class, null, [
             'action' => $this->generateUrl('contact_us'),
         ]);
-        if (!empty($this->copyto)) {
+        if (!empty($this->getCopyto())) {
             $form->add(self::COPY_TO_IDENTIFIER, HiddenType::class, [
                 'data' => $this->getCopyto(),
             ]);

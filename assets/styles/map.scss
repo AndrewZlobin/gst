@@ -1,3 +1,12 @@
+$map-header-font-size:        32px;
+$map-header-line-height:      39px;
+$map-header-margin-bottom:    72px;
+
+$map-caption-text-align:      justify;
+$map-caption-margin-bottom:   37px;
+
+$map-with-caption-custom-background:    #F7F7F7;
+
 $map-min-height:    585px;
 $map-fill-color:    #2D394F;
 
@@ -15,6 +24,31 @@ $map-popup-name-color:        map-get($theme-colors, "map-card-text");
 $map-popup-caption-font-size:    12px;
 $map-popup-caption-line-height:  15px;
 $map-popup-caption-color:        map-get($theme-colors, "map-card-text");
+
+.map-header {
+  @include style-text-node(
+                  $map-header-font-size,
+                  $map-header-line-height,
+                  map-get($theme-colors, "custom-header-dark"),
+                  $font-weight-bold
+  );
+  margin-bottom: $map-header-margin-bottom;
+
+  &_with_caption {
+    padding-top: $spacer * 4;
+    margin-bottom: $spacer * 1.5;
+  }
+}
+
+.map-caption {
+  @include style-text-node("21px", "29px", map-get($theme-colors, "custom-header-dark"), $font-weight-regular);
+  text-align: $map-caption-text-align;
+  margin-bottom: $map-caption-margin-bottom;
+}
+
+.map-custom-bg {
+  background: $map-with-caption-custom-background;
+}
 
 .map-container {
   $map-container: ".map-container";

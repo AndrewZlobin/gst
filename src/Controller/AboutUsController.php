@@ -30,7 +30,7 @@ class AboutUsController extends AbstractController
         $navbar = $blocks->getNavbar();
         $subheader = $blocks->getSubheader();
         $companyreference = $blocks->getCompanyreference();
-        dump($companyreference->getReference());
+        $map = $blocks->getMap();
 
         return $this->render('about_us/index.html.twig', [
             'pagetitle' => $this->translator->trans("pages.${page}"),
@@ -38,6 +38,7 @@ class AboutUsController extends AbstractController
             $navbar->getIdentifier() => $navbar->getNavbar(),
             $subheader->getIdentifier() => $subheader->getSubHeader($page),
             $companyreference->getIdentifier() => $companyreference->getReference(),
+            $map->getIdentifier() => $map->getOfficesForMap(),
         ]);
     }
 }
