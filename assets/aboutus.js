@@ -5,3 +5,4 @@ import './styles/aboutus.scss';
 import './bootstrap';
 
 import './map';
+import './custom-slider';

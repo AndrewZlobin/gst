@@ -21,6 +21,27 @@ $references-directions-item-background:       url("/assets/icons/list-marker.svg
 
 $references-message-text-align:   $references-caption-text-align;
 
+$licensesandcertificates-header-font-size:    32px;
+$licensesandcertificates-header-line-height:  43px;
+$licensesandcertificates-header-color:        map-get($theme-colors, "custom-text-dark");
+$licensesandcertificates-margin:              $spacer * 5 0 $spacer * 1.5;
+
+$licensesandcertificates-caption-font-size:     21px;
+$licensesandcertificates-caption-line-height:   29px;
+$licensesandcertificates-caption-color:         map-get($theme-colors, "custom-header-dark");
+
+$licensesandcertificates-slider-max-height:         512px;
+$licensesandcertificates-slider-image-box-shadow:   4px 7px 20px 6px rgba(0, 0, 0, 0.14);
+
+$licensesandcertificates-pagination-background:     linear-gradient(270deg, #2D394F 6.05%, rgba(62, 79, 112, 0.956441) 131.85%);
+$licensesandcertificates-pagination-box-shadow:     4px 7px 20px 6px rgba(0, 0, 0, 0.14);
+$licensesandcertificates-pagination-border-radius:  29px;
+$licensesandcertificates-pagination-padding:        10px 0;
+$licensesandcertificates-pagination-width:          110px;
+
+$licensesandcertificates-button-width:        20px;
+$licensesandcertificates-button-height:       10px;
+
 .references {
   display: grid;
   gap: $spacer * 3 $spacer * 4;
@@ -116,5 +137,100 @@ $references-message-text-align:   $references-caption-text-align;
     @include  media-breakpoint-down(md) {
       grid-column: span 2;
     }
+  }
+}
+
+/*
+landc - licensesandcertificates
+*/
+
+// Headers on 'AboutUs' page
+.aboutus {
+  &__header {
+    @include style-text-node(
+                    $licensesandcertificates-header-font-size,
+                    $licensesandcertificates-header-line-height,
+                    $licensesandcertificates-header-color,
+                    $font-weight-bold
+    );
+
+    &_landc {
+      margin: $licensesandcertificates-margin;
+    }
+  }
+}
+
+// Styles for Licenses And Certificates
+.landc {
+  &__caption {
+    @include style-text-node(
+                    $licensesandcertificates-caption-font-size,
+                    $licensesandcertificates-caption-line-height,
+                    $licensesandcertificates-caption-color,
+                    $font-weight-regular
+    );
+    text-align: justify;
+  }
+
+  &__media {
+    display: grid;
+    grid-template-columns: .4fr .6fr;
+    gap: $spacer * 2.75;
+
+    @include media-breakpoint-down(md) {
+      grid-template-columns: 1fr;
+      gap: $spacer * 1.25;
+    }
+  }
+
+  &__list {
+    margin: 0;
+    display: grid;
+    gap: $spacer;
+    grid-auto-rows: max-content;
+  }
+
+  &__element {
+    list-style-type: square;
+    @include style-text-node(
+                    "20px",
+                    "24px",
+                    map-get($theme-colors, "custom-header-dark"),
+                    $font-weight-light
+    );
+  }
+
+  &__slider {
+    max-height: $licensesandcertificates-slider-max-height;
+  }
+
+  &__pagination {
+    @include style-text-node("22px", "27px", $white, $font-weight-light);
+    background: $licensesandcertificates-pagination-background;
+    box-shadow: $licensesandcertificates-pagination-box-shadow;
+    border-radius: $licensesandcertificates-pagination-border-radius;
+    padding: $licensesandcertificates-pagination-padding;
+    width: $licensesandcertificates-pagination-width;
+    left: calc(50% - #{$licensesandcertificates-pagination-width / 2});
+    right: calc(50% - #{$licensesandcertificates-pagination-width / 2});
+  }
+
+  &__prev,
+  &__next {
+    top: calc(100% - #{$spacer});
+    width: $licensesandcertificates-button-width;
+    height: $licensesandcertificates-button-height;
+
+    &:after {
+      font-size: $spacer * 1.25;
+    }
+  }
+
+  &__prev {
+    left: calc(50% - #{$licensesandcertificates-pagination-width / 2} + #{$spacer * .25});
+  }
+
+  &__next {
+    right: calc(50% - #{$licensesandcertificates-pagination-width / 2} + #{$spacer * .25});
   }
 }

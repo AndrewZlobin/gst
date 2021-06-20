@@ -16,18 +16,21 @@ class BlocksForAboutUsPage
     private SubHeadersGenerator $subheader;
     private CompanyReferenceGenerator $companyreference;
     private MapGenerator $map;
+    private LicensesAndCertificatesGenerator $licensesandcertificates;
 
     public function __construct(TranslatorInterface $translator,
                                 NavbarGenerator $navbar,
                                 SubHeadersGenerator $subheader,
                                 CompanyReferenceGenerator $companyreference,
-                                MapGenerator $map)
+                                MapGenerator $map,
+                                LicensesAndCertificatesGenerator $licensesandcertificates)
     {
         $this->translator = $translator;
         $this->navbar = $navbar;
         $this->subheader = $subheader;
         $this->companyreference = $companyreference;
         $this->map = $map;
+        $this->licensesandcertificates = $licensesandcertificates;
     }
 
     /**
@@ -63,6 +66,14 @@ class BlocksForAboutUsPage
         $this->map->setUsedefaultwrapper(true);
 
         return $this->map;
+    }
+
+    /**
+     * @return LicensesAndCertificatesGenerator
+     */
+    public function getLicensesandcertificates(): LicensesAndCertificatesGenerator
+    {
+        return $this->licensesandcertificates;
     }
 
 }
