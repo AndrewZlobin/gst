@@ -5,7 +5,7 @@ $map-header-margin-bottom:    72px;
 $map-caption-text-align:      justify;
 $map-caption-margin-bottom:   37px;
 
-$map-with-caption-custom-background:    #F7F7F7;
+$map-with-caption-custom-background:    map-get($theme-colors, "custom-gray-color");
 
 $map-min-height:    585px;
 $map-fill-color:    #2D394F;
