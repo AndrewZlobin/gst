@@ -1,0 +1,27 @@
+{% extends 'components/_wrapper.html.twig' %}
+{% if customersandreviews.extracontainerclasses is defined %}
+    {% set extracontainerclasses = customersandreviews.extracontainerclasses %}
+{% endif %}
+{% block wrappercontent %}
+    <h1 class="aboutus__header aboutus__header_landc">{{ customersandreviews.customers.header }}</h1>
+    <div class="customers__container">
+        <div class="customers__list customers__list_left">
+            <ul class="list-group list-group-flush">
+                {% for leftcolumnofcustomers in customersandreviews.customers.customersleft %}
+                    <li class="list-group-item bg-transparent border-0 p-0">{{ leftcolumnofcustomers }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+        <div class="customers__list customers__list_right">
+            <ul class="list-group list-group-flush">
+                {% for rightcolumnofcustomers in customersandreviews.customers.customersright %}
+                    <li class="list-group-item bg-transparent border-0 p-0">{{ rightcolumnofcustomers }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+        <div class="customers__caption">
+            {{ customersandreviews.customers.caption | raw }}
+        </div>
+    </div>
+    {{ dump(customersandreviews) }}
+{% endblock %}

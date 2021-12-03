@@ -24,7 +24,7 @@ $references-message-text-align:   $references-caption-text-align;
 $licensesandcertificates-header-font-size:    32px;
 $licensesandcertificates-header-line-height:  43px;
 $licensesandcertificates-header-color:        map-get($theme-colors, "custom-text-dark");
-$licensesandcertificates-margin:              $spacer * 5 0 $spacer * 1.5;
+$licensesandcertificates-padding:              $spacer * 5 0 $spacer * 1.5;
 
 $licensesandcertificates-caption-font-size:     21px;
 $licensesandcertificates-caption-line-height:   29px;
@@ -41,6 +41,8 @@ $licensesandcertificates-pagination-width:          110px;
 
 $licensesandcertificates-button-width:        20px;
 $licensesandcertificates-button-height:       10px;
+
+$customers-list-min-width:            374px;
 
 .references {
   display: grid;
@@ -155,7 +157,7 @@ landc - licensesandcertificates
     );
 
     &_landc {
-      margin: $licensesandcertificates-margin;
+      padding: $licensesandcertificates-padding;
     }
   }
 }
@@ -232,5 +234,42 @@ landc - licensesandcertificates
 
   &__next {
     right: calc(50% - #{$licensesandcertificates-pagination-width / 2} + #{$spacer * .25});
+  }
+}
+
+// Styles for Customers and Reviews
+
+.customers {
+  &__container {
+    display: grid;
+    grid-template-areas:
+            "customersleftlist customersrightlist customerscaption";
+
+    @include media-breakpoint-down(md) {
+      grid-template-areas:
+              "customerscaption customerscaption"
+              "customersleftlist customersrightlist";
+    }
+
+    @include media-breakpoint-down(sm) {
+      grid-template-areas:
+              "customerscaption"
+              "customersleftlist"
+              "customersrightlist";
+    }
+  }
+
+  &__list {
+    &_left {
+      grid-area: customersleftlist;
+    }
+
+    &_right {
+      grid-area: customersrightlist;
+    }
+  }
+
+  &__caption {
+    grid-area: customerscaption;
   }
 }
