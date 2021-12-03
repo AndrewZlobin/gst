@@ -125,6 +125,51 @@ licensesandcertificates:
     element5: 'Сертификат № АЦСТ - 56 - 01958 о готовности к использованию аттестованной технологии сварки.'
     element6: 'Лицензия МЧС России № 77-Б/07107 на осуществление деятельности по монтажу,
     техническому обслуживанию и ремонту средств обеспечения пожарной безопасности'
+customersandreviews:
+  customers:
+    header: Наши Заказчики
+    caption: '<span class="font-weight-semi-bold">ООО «Газстройтех»</span> успешно сотрудничает с
+    крупнейшими Заказчиками нефтегазового комплекса'
+    customerleftcolumn1: ООО Фирма «СЕРВИСГАЗАВТОМАТИКА»
+    customerleftcolumn2: ООО «СпецГазСтрой»
+    customerleftcolumn3: ООО «ОМЦ Газметрология»
+    customerleftcolumn4: ООО «Нефтегазкомплектмонтаж»
+    customerleftcolumn5: ООО «Нова»
+    customerleftcolumn6: ООО «Подводгазэнергосервис»
+    customerleftcolumn7: ООО «В-МАКС СТРОЙ»
+    customerleftcolumn8: ООО «ОМЦ Газметрология»
+    customerleftcolumn9: АО «ЛГСС»
+    customerleftcolumn10: ООО «ГСП-комплектация»
+    customerleftcolumn11: ООО «СГК-комплектация»
+    customerleftcolumn12: АО «Волгогаз»
+    customerleftcolumn13: ООО «Нефтегазкомплектмонтаж»
+    customerleftcolumn14: ООО «Ремгазсервис»
+    customerleftcolumn15: ООО «Мегамолстрой»
+    customerleftcolumn16: ООО «Газпром связь»
+    customerleftcolumn17: ПАО «Газпром автоматизация»
+    customerrightcolumn1: ООО «Газпром трансгаз Югорск»
+    customerrightcolumn2: ООО «Газпром трансгаз Краснодар»
+    customerrightcolumn3: ООО «Газпром добыча Краснодар»
+    customerrightcolumn4: ООО «Газпром трансгаз Чайковский»
+    customerrightcolumn5: ООО «Газпром трансгаз Нижний Новгород»
+    customerrightcolumn6: ООО «Газпром трансгаз Томск»
+    customerrightcolumn7: ООО «Газпром трансгаз Новый Уренгой»
+    customerrightcolumn8: ООО «Газпром трансгаз Сургут»
+    customerrightcolumn9: ООО «Газпром трансгаз Самара»
+    customerrightcolumn10: ООО «Газпром трансгаз Казань»
+    customerrightcolumn11: ООО «Газпром трансгаз Саратов»
+    customerrightcolumn12: ООО «Газпром добыча Ямбург»
+    customerrightcolumn13: ООО «Газпром добыча Уренгой»
+    customerrightcolumn14: ООО «Газпром авиа»
+    customerrightcolumn15: ООО «Газпром социнвест»
+    customerrightcolumn16: ООО «Подводгазэнергосервис»
+    customerrightcolumn17: ООО «Газпром добыча Ноябрьск»
+  reviews:
+    header: Отзывы наших заказчиков
+    caption: '<span class="font-weight-semi-bold">ООО «Газстройтех»</span> опыт выполнения робот,
+    а также опыт проведения инженерных изысканий, разработки технико-экономических обоснований строительства,
+    подготовки проектной документации для нужд компаний Группы «Газпром».'
+
 # Contact us Form
 fullname: ФИО
 email: E-mail
