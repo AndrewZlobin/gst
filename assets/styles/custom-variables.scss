@@ -1,3 +1,7 @@
+// Global
+$custom-block-box-shadow:           3px 4px 7px 1px rgba(0, 0, 0, 0.25);
+$custom-yellow-button-background:   linear-gradient(92.08deg, #EFC455 -3.35%, #E6AD41 111.73%);
+
 // For header above navbar
 $navbar-header-font-size:     12px;
 $navbar-header-line-height:   15px;
@@ -17,7 +21,7 @@ $navbar-with-banner-header-line-height:     45px;
 $navbar-with-banner-caption-font-size:      25px;
 $navbar-with-banner-caption-line-height:    34px;
 
-$navbar-with-banner-button-color:         linear-gradient(92.08deg, #EFC455 -3.35%, #E6AD41 111.73%);
+$navbar-with-banner-button-color:         $custom-yellow-button-background;
 $navbar-with-banner-button-font-size:     19px;
 $navbar-with-banner-button-line-height:   23px;
 

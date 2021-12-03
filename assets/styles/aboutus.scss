@@ -10,8 +10,8 @@ $references-mragin-bottom-to-next-block:    82px;
 
 $references-caption-text-align:     justify;
 
-$references-directions-header-background:     linear-gradient(92.08deg, #EFC455 -3.35%, #E6AD41 111.73%);
-$references-directions-header-box-shadow:     3px 4px 7px 1px rgba(0, 0, 0, 0.25);
+$references-directions-header-background:     $custom-yellow-button-background;
+$references-directions-header-box-shadow:     $custom-block-box-shadow;
 $references-directions-header-letter-spacing: 0.065em;
 $references-directions-header-text-transform: uppercase;
 
@@ -43,6 +43,8 @@ $licensesandcertificates-button-width:        20px;
 $licensesandcertificates-button-height:       10px;
 
 $customers-list-min-width:            374px;
+$customers-caption-min-height:        439px;
+$customers-caption-max-width:         16ch;
 
 .references {
   display: grid;
@@ -242,6 +244,8 @@ landc - licensesandcertificates
 .customers {
   &__container {
     display: grid;
+    row-gap: $spacer;
+
     grid-template-areas:
             "customersleftlist customersrightlist customerscaption";
 
@@ -262,14 +266,49 @@ landc - licensesandcertificates
   &__list {
     &_left {
       grid-area: customersleftlist;
+      margin-right: $spacer;
+
+      @include media-breakpoint-down(sm) {
+        margin-right: 0;
+      }
     }
 
     &_right {
       grid-area: customersrightlist;
+      margin-right: $spacer * 2;
+
+      @include media-breakpoint-down(md) {
+        margin-right: 0;
+      }
     }
   }
 
   &__caption {
     grid-area: customerscaption;
+    background: $custom-yellow-button-background;
+    box-shadow: $custom-block-box-shadow;
+
+    min-height: $customers-caption-min-height;
+    @include media-breakpoint-down(md) {
+      min-height: auto;
+    }
+  }
+
+  &__message {
+    @include style-text-node($font-size-base * 1.875, $line-height-base - .1, $white, $font-weight-regular);
+    max-width: $customers-caption-max-width;
+
+    @include media-breakpoint-down(md) {
+      max-width: $customers-caption-max-width * 2;
+      padding: $spacer * 1.25;
+    }
+
+    @include media-breakpoint-down(md) {
+      max-width: none;
+    }
+  }
+
+  &__customer {
+    @include style-text-node($font-size-base, $line-height-base + .1, map-get($theme-colors, "custom-header-dark"), $font-weight-regular);
   }
 }
