@@ -32,6 +32,7 @@ class AboutUsController extends AbstractController
         $companyreference = $blocks->getCompanyreference();
         $map = $blocks->getMap();
         $licensesandcertificates = $blocks->getLicensesandcertificates();
+        $customersandreviews = $blocks->getCustomersandreviews();
 
         return $this->render('about_us/index.html.twig', [
             'pagetitle' => $this->translator->trans("pages.${page}"),
@@ -41,6 +42,7 @@ class AboutUsController extends AbstractController
             $companyreference->getIdentifier() => $companyreference->getReference(),
             $map->getIdentifier() => $map->getOfficesForMap(),
             $licensesandcertificates->getIdentifier() => $licensesandcertificates->getLicensesAndCertificates(),
+            $customersandreviews->getIdentifier() => $customersandreviews->getCustomers(),
         ]);
     }
 }

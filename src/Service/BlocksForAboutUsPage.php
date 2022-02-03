@@ -17,13 +17,15 @@ class BlocksForAboutUsPage
     private CompanyReferenceGenerator $companyreference;
     private MapGenerator $map;
     private LicensesAndCertificatesGenerator $licensesandcertificates;
+    private CustomersAndReviewsGenerator $customersandreviews;
 
     public function __construct(TranslatorInterface $translator,
                                 NavbarGenerator $navbar,
                                 SubHeadersGenerator $subheader,
                                 CompanyReferenceGenerator $companyreference,
                                 MapGenerator $map,
-                                LicensesAndCertificatesGenerator $licensesandcertificates)
+                                LicensesAndCertificatesGenerator $licensesandcertificates,
+                                CustomersAndReviewsGenerator $customersandreviews)
     {
         $this->translator = $translator;
         $this->navbar = $navbar;
@@ -31,6 +33,7 @@ class BlocksForAboutUsPage
         $this->companyreference = $companyreference;
         $this->map = $map;
         $this->licensesandcertificates = $licensesandcertificates;
+        $this->customersandreviews = $customersandreviews;
     }
 
     /**
@@ -74,6 +77,14 @@ class BlocksForAboutUsPage
     public function getLicensesandcertificates(): LicensesAndCertificatesGenerator
     {
         return $this->licensesandcertificates;
+    }
+
+    /**
+     * @return CustomersAndReviewsGenerator
+     */
+    public function getCustomersandreviews(): CustomersAndReviewsGenerator
+    {
+        return $this->customersandreviews;
     }
 
 }
