@@ -18,6 +18,8 @@ class BlocksForAboutUsPage
     private MapGenerator $map;
     private LicensesAndCertificatesGenerator $licensesandcertificates;
     private CustomersAndReviewsGenerator $customersandreviews;
+    private CustomersFeedbackGenerator $customersfeedback;
+    private FooterWithBlockGenerator $footerwithblockgenerator;
 
     public function __construct(TranslatorInterface $translator,
                                 NavbarGenerator $navbar,
@@ -25,7 +27,9 @@ class BlocksForAboutUsPage
                                 CompanyReferenceGenerator $companyreference,
                                 MapGenerator $map,
                                 LicensesAndCertificatesGenerator $licensesandcertificates,
-                                CustomersAndReviewsGenerator $customersandreviews)
+                                CustomersAndReviewsGenerator $customersandreviews,
+                                CustomersFeedbackGenerator $customersfeedback,
+                                FooterWithBlockGenerator $footerwithblockgenerator)
     {
         $this->translator = $translator;
         $this->navbar = $navbar;
@@ -34,6 +38,8 @@ class BlocksForAboutUsPage
         $this->map = $map;
         $this->licensesandcertificates = $licensesandcertificates;
         $this->customersandreviews = $customersandreviews;
+        $this->customersfeedback = $customersfeedback;
+        $this->footerwithblockgenerator = $footerwithblockgenerator;
     }
 
     /**
@@ -87,4 +93,13 @@ class BlocksForAboutUsPage
         return $this->customersandreviews;
     }
 
+    public function getCustomersFeedbacks(): CustomersFeedbackGenerator
+    {
+        return $this->customersfeedback;
+    }
+
+    public function getFooter()
+    {
+        return $this->footerwithblockgenerator->getFooter($this->getCustomersFeedbacks()->getFeedbacksData());
+    }
 }

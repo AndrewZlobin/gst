@@ -3,7 +3,7 @@
     {% set extracontainerclasses = customersandreviews.extracontainerclasses %}
 {% endif %}
 {% block wrappercontent %}
-    <h1 class="aboutus__header aboutus__header_landc">{{ customersandreviews.customers.header }}</h1>
+    <h1 class="aboutus__header aboutus__header_landc">{{ customersandreviews.customers.header|raw }}</h1>
     <div class="customers__container">
         <div class="customers__list customers__list_left">
             <ul class="list-group list-group-flush">
@@ -25,6 +25,4 @@
             </div>
         </div>
     </div>
-    {#  TODO Remove dump after ending  #}
-    {{ dump(customersandreviews) }}
 {% endblock %}

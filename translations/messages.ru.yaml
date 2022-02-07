@@ -127,7 +127,7 @@ licensesandcertificates:
     техническому обслуживанию и ремонту средств обеспечения пожарной безопасности'
 customersandreviews:
   customers:
-    header: Наши Заказчики
+    header: Наши<br>Заказчики
     caption: '<span class="font-weight-semi-bold">ООО «Газстройтех»</span> успешно сотрудничает с
     крупнейшими Заказчиками нефтегазового комплекса'
     customerleftcolumn1: ООО Фирма «СЕРВИСГАЗАВТОМАТИКА»
