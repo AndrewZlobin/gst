@@ -33,7 +33,7 @@ $footer-with-form-map-pin-height:  48px;
   &__with-content {
     background-color: unset;
     background-image: url("/assets/img/cranes_bg.png"),
-     linear-gradient($footer-substratum-background-subcolor, $footer-substratum-background-subcolor calc(100% - #{$footer-max-height}), $footer-substratum-background-color calc(100% - #{$footer-max-height}), $footer-substratum-background-color 100%);
+    linear-gradient($footer-substratum-background-subcolor, $footer-substratum-background-subcolor calc(100% - #{$footer-max-height}), $footer-substratum-background-color calc(100% - #{$footer-max-height}), $footer-substratum-background-color 100%);
     background-position: bottom;
   }
 }
