@@ -6,7 +6,7 @@
 @import "./assets/styles/footer";
 @import "./assets/styles/subheaders";
 
-$references-mragin-bottom-to-next-block:    82px;
+$references-margin-bottom-to-next-block:    82px;
 
 $references-caption-text-align:     justify;
 
@@ -20,6 +20,8 @@ $references-directions-item-marker-position:  $references-directions-item-font-s
 $references-directions-item-background:       url("/assets/icons/list-marker.svg") no-repeat left $references-directions-item-marker-position;
 
 $references-message-text-align:   $references-caption-text-align;
+
+$licensesandcertificates-padding-bottom:       105px;
 
 $licensesandcertificates-header-font-size:    32px;
 $licensesandcertificates-header-line-height:  43px;
@@ -42,16 +44,21 @@ $licensesandcertificates-pagination-width:          110px;
 $licensesandcertificates-button-width:        20px;
 $licensesandcertificates-button-height:       10px;
 
+$customers-padding-bottom:             75px;
 $customers-list-min-width:            374px;
 $customers-caption-min-height:        439px;
 $customers-caption-max-width:         16ch;
+
+$customers-feedbacks-padding-bottom:  $customers-padding-bottom;
+$customers-feedbacks-column-gap:      52px;
+$customers-feedbacks-row-gap:         $spacer;
 
 .references {
   display: grid;
   gap: $spacer * 3 $spacer * 4;
   grid-template-columns: repeat(2, 1fr);
 
-  margin-bottom: $references-mragin-bottom-to-next-block;
+  margin-bottom: $references-margin-bottom-to-next-block;
 
   @include  media-breakpoint-down(md) {
     grid-template-columns: 1fr;
@@ -180,6 +187,7 @@ landc - licensesandcertificates
     display: grid;
     grid-template-columns: .4fr .6fr;
     gap: $spacer * 2.75;
+    padding-bottom: $licensesandcertificates-padding-bottom;
 
     @include media-breakpoint-down(md) {
       grid-template-columns: 1fr;
@@ -245,6 +253,7 @@ landc - licensesandcertificates
   &__container {
     display: grid;
     row-gap: $spacer;
+    padding-bottom: $customers-padding-bottom;
 
     grid-template-areas:
             "customersleftlist customersrightlist customerscaption";
@@ -310,5 +319,45 @@ landc - licensesandcertificates
 
   &__customer {
     @include style-text-node($font-size-base, $line-height-base + .1, map-get($theme-colors, "custom-header-dark"), $font-weight-regular);
+  }
+}
+
+.customers-feedbacks {
+  display: grid;
+  row-gap: $customers-feedbacks-row-gap;
+  padding-bottom: $customers-feedbacks-padding-bottom;
+
+  grid-template-columns: repeat(4, .25fr);
+  column-gap: $customers-feedbacks-column-gap;
+
+  @include  media-breakpoint-down(md) {
+    grid-template-columns: repeat(2, .5fr);
+    column-gap: $customers-feedbacks-column-gap / 2;
+  }
+
+  @include  media-breakpoint-down(sm) {
+    grid-template-columns: repeat(1, 1fr);
+    column-gap: $customers-feedbacks-column-gap / 4;
+  }
+}
+
+.customers-feedback {
+  padding: $spacer * .75 $spacer * .25;
+  border: 1px solid #2D394F;
+
+  &__caption {
+    /* Синий шапка */
+    background: linear-gradient(180deg, #2D394F 0%, #292F43 79.69%, #1B0E1B 100%);
+    
+    /* Тень блока */
+    box-shadow: 3px 4px 7px 1px rgba(0, 0, 0, 0.25);
+
+    padding: $spacer * 1.5 $spacer *.5 0;
+    color: $white;
+  }
+
+  &__image {
+    width: 234px;
+    height: 331px;
   }
 }

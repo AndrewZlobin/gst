@@ -5,7 +5,7 @@ namespace App\Service;
 
 class CustomersFeedbackGenerator
 {
-    const IDENTIFIER = 'customersfeedback';
+    const IDENTIFIER = 'customersfeedbacks';
     const WRAPPER_CLASS = 'bg-transparent';
 
     const PREFIX = 'feedback-';
@@ -19,6 +19,7 @@ class CustomersFeedbackGenerator
     public function getFeedbacksData(): array
     {
         return [
+            'extracontainerclasses' => self::WRAPPER_CLASS,
             'header' => 'Отзывы наших заказчиков',
             'caption' => '<span class="font-weight-semi-bold">ООО «Газстройтех»</span> имеет опыт выполнения робот, 
             а также опыт проведения инженерных изысканий, 
@@ -32,7 +33,7 @@ class CustomersFeedbackGenerator
     {
         $feedbacks = [];
 
-        for ($i = 1; $i < self::MAX_FEEDBACKS; $i++) { 
+        for ($i = 1; $i <= self::MAX_FEEDBACKS; $i++) { 
             $feedbacks[] = 'feedback-' . $i;
         }
 

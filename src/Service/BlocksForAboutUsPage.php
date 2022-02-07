@@ -100,6 +100,6 @@ class BlocksForAboutUsPage
 
     public function getFooter()
     {
-        return $this->footerwithblockgenerator->getFooter($this->getCustomersFeedbacks()->getFeedbacksData());
+        return $this->footerwithblockgenerator;
     }
 }
