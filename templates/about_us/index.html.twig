@@ -16,6 +16,10 @@
 {% endblock %}
 
 {% block footer %}
+    <div class="footer__substratum footer__substratum__with-content">
+        {{  include('components/_customersfeedbacks.html.twig') }}
+        {{  include('components/_footer.html.twig') }}
+    </div>
 {% endblock %}
 
 {% block javascripts %}
