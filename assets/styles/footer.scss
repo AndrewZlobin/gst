@@ -84,7 +84,7 @@ $footer-with-form-map-pin-height:  48px;
     height: $footer-block-arrow-height;
   }
   &__link {
-    @include style-text-node("27px", "33px", $white, $font-weight-regular);
+    @include style-text-node("27px", "32px", $white, $font-weight-regular);
   }
 
   &__blocks {
