@@ -7,7 +7,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Contracts\Translation\TranslatorInterface;
 
-use App\Service\BlocksForActivitiesPage;
+use App\Service\BlocksForMainActivitiesPage;
 
 class MainActivitiesController extends AbstractController
 {
@@ -24,7 +24,7 @@ class MainActivitiesController extends AbstractController
     /**
      * @Route("/main_activities", name="main_activities")
      */
-    public function index(BlocksForActivitiesPage $blocks): Response
+    public function index(BlocksForMainActivitiesPage $blocks): Response
     {
 //        construction_and_installation
 //        design_and_survey
@@ -37,9 +37,9 @@ class MainActivitiesController extends AbstractController
         $footer = $blocks->getFooter();
 
         return $this->render('main_activities/index.html.twig', [
-            $navbar->getIdentifier() => $navbar->getNavbar(),
             'pagetitle' => $this->translator->trans("pages.${page}"),
             'extracontainerclasses' => self::WRAPPER_CLASS,
+            $navbar->getIdentifier() => $navbar->getNavbar(),
             $footer->getIdentifier() => $footer->getFooter([
                 'footercontainer' => $this->translator->trans("pages.${page}"),
                 'extracontainerclasses' => 'bg-transparent'

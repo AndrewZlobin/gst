@@ -4,7 +4,7 @@ namespace App\Service;
 
 use Symfony\Contracts\Translation\TranslatorInterface;
 
-class BlocksForActivitiesPage
+class BlocksForOurProjectsPage
 {
     private TranslatorInterface $translator;
     private NavbarGenerator $navbar;
