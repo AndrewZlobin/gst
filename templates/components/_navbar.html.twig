@@ -2,6 +2,7 @@
 {% set extracontainerclasses = 'navbar-no-banner' %}
 {% block wrappercontent %}
     <nav class="navbar-no-banner__menu row pt-4">
+        {% set route_name = app.request.attributes.get('_route') %}
         {% for link in navbar.links %}
             {% if link.renderinlogo is defined %}
                 <div class="col col-md-8 col-lg-6 col-xl-4 mb-3 mb-xl-0">
@@ -14,7 +15,15 @@
         <div class="col-6 col-md-8 d-flex align-items-end flex-wrap flex-md-nowrap">
             {% for link in navbar.links %}
                 {% if link.renderinlogo is not defined %}
-                    <a class="navbar-no-banner__link nav-link" href="{{ link.href }}">{{ link.title|upper }}</a>
+                    {% if link.route is defined %}
+                        {% if link.route == route_name %}
+                            <a class="navbar-no-banner__link nav-link active" href="{{ link.href }}">{{ link.title|upper }}</a>
+                        {% else %}
+                            <a class="navbar-no-banner__link nav-link" href="{{ link.href }}">{{ link.title|upper }}</a>
+                        {% endif %}
+                    {% else %}
+                        <a class="navbar-no-banner__link nav-link" href="{{ link.href }}">{{ link.title|upper }}</a>
+                    {% endif %}
                 {% endif %}
             {% endfor %}
         </div>

@@ -57,22 +57,27 @@ class NavbarGenerator
             ],
             [
                 'title' => $this->translator->trans('navbar.links.aboutus'),
+                'route' => self::ABOUT_US,
                 'href' => $this->router->generate(self::ABOUT_US, [], $referencetype),
             ],
             [
                 'title' => $this->translator->trans('navbar.links.activities'),
+                'route' => self::MAIN_ACTIVITIES,
                 'href' => $this->router->generate(self::MAIN_ACTIVITIES, [], $referencetype),
             ],
             [
                 'title' => $this->translator->trans('navbar.links.projects'),
+                'route' => self::OUR_PROJECTS,
                 'href' => $this->router->generate(self::OUR_PROJECTS, [], $referencetype),
             ],
             [
                 'title' => $this->translator->trans('navbar.links.career'),
+                'route' => self::OUR_TEAM,
                 'href' => $this->router->generate(self::OUR_TEAM, [], $referencetype),
             ],
             [
                 'title' => $this->translator->trans('navbar.links.contacts'),
+                'route' => self::CONTACTS,
                 'href' => $this->router->generate(self::CONTACTS, [], $referencetype),
             ],
         ];
