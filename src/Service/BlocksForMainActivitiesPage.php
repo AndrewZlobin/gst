@@ -3,6 +3,7 @@
 namespace App\Service;
 
 use Symfony\Contracts\Translation\TranslatorInterface;
+use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 
 class BlocksForMainActivitiesPage
 {
@@ -12,15 +13,19 @@ class BlocksForMainActivitiesPage
     const CONSTRUCTION_EQUIPMENT_RENTAL = 'construction_equipment_rental';
 
     private TranslatorInterface $translator;
+    private UrlGeneratorInterface $router;
+
     private NavbarGenerator $navbar;
     private FooterWithBlockGenerator $footerwithblockgenerator;
 
     public function __construct(TranslatorInterface $translator,
+                                UrlGeneratorInterface $router,
                                 NavbarGenerator $navbar,
                                 FooterWithBlockGenerator $footerwithblockgenerator
                                 )
     {
         $this->translator = $translator;
+        $this->router = $router;
         $this->navbar = $navbar;
         $this->footerwithblockgenerator = $footerwithblockgenerator;
     }
@@ -48,7 +53,22 @@ class BlocksForMainActivitiesPage
 
     private function getActivities(): array
     {
+        $activities = [
+            self::CONSTRUCTION_AND_INSTALLATION => [],
+            self::DESIGN_AND_SURVEY => [],
+            self::COMPLEX_SUPPLIES => [],
+            self::CONSTRUCTION_EQUIPMENT_RENTAL => []
+        ];
 
+        foreach ($activities as $key => $data) {
+            $activities[$key] = [
+                'header' => $this->getActivityHeader($key),
+                'description' => $this->getActivityDescription($key),
+                'route' => $this->getActivityRoute($key)
+            ];
+        }
+
+        return $activities;
     }
 
     private function getActivityHeader(string $key): string
@@ -73,5 +93,10 @@ class BlocksForMainActivitiesPage
         ];
 
         return $descriptions[$key];
+    }
+
+    private function getActivityRoute(string $key): string
+    {
+        return $this->router->generate($key);
     }
 }
