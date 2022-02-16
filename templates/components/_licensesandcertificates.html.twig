@@ -1,0 +1,30 @@
+{% extends 'components/_wrapper.html.twig' %}
+{% if licensesandcertificates.extracontainerclasses is defined %}
+    {% set extracontainerclasses = licensesandcertificates.extracontainerclasses %}
+{% endif %}
+{% block wrappercontent %}
+    <div class="col px-0">
+        <h1 class="aboutus__header aboutus__header_landc">{{ licensesandcertificates.header|raw }}</h1>
+        <div class="landc__caption mb-4">{{ licensesandcertificates.caption|raw }}</div>
+        <div class="landc__media">
+            <ul class="landc__list">
+                {% for element in licensesandcertificates.listelements %}
+                    <li class="landc__element">{{ element }}</li>
+                {% endfor %}
+            </ul>
+            <div class="landc__slider swiper-container w-100 pb-10">
+                <div class="swiper-wrapper">
+                    {% for file in licensesandcertificates.files %}
+                        {% set imgsrc = 'build/img/' ~ file ~ '.jpg' %}
+                        <div class="swiper-slide">
+                            <img class="landc__img w-100 h-100" src="{{ absolute_url(asset(imgsrc)) }}">
+                        </div>
+                    {% endfor %}
+                </div>
+                <div class="swiper-pagination landc__pagination"></div>
+                <div class="swiper-button-prev landc__prev text-white"></div>
+                <div class="swiper-button-next landc__next text-white"></div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

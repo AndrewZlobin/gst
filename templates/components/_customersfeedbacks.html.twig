@@ -1,0 +1,19 @@
+{% extends 'components/_wrapper.html.twig' %}
+{% if footer.footercontent.extracontainerclasses is defined %}
+    {% set extracontainerclasses = footer.footercontent.extracontainerclasses %}
+{% endif %}
+{% block wrappercontent %}
+    {% set customersfeedbacks = footer.footercontent %}
+    <h1 class="aboutus__header aboutus__header_landc">{{customersfeedbacks.header}}</h1>
+    <div class="customers-feedbacks">
+        <div class="customers-feedback__caption">
+            {{customersfeedbacks.caption|raw}}
+        </div>
+        {% for feedback in customersfeedbacks.feedbacks%}
+            {% set imgsrc = 'build/img/' ~ feedback ~ '.jpg' %}
+            <div class="customers-feedback">
+                <img class="customers-feedback__image" src="{{ imgsrc }}" alt="{{customersfeedbacks.header}}">
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}

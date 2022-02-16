@@ -3,10 +3,10 @@
     {% set extracontainerclasses = advantages.extracontainerclasses %}
 {% endif %}
 {% block wrappercontent %}
-    <div class="col">
+    <div class="col px-0">
         <h1 class="landing-header">{{ advantages.header|raw }}</h1>
     </div>
-    <div class="landing-advantages col">
+    <div class="landing-advantages col px-0">
         {% for advantage in advantages.blocks %}
             {#Image src variable for each advantage#}
             {% set imgsrc = 'build/img/' ~ advantage.image ~ '.png' %}

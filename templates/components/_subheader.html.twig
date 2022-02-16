@@ -1,0 +1,8 @@
+{% extends 'components/_wrapper.html.twig' %}
+{% set extracontainerclasses = subheader.extracontainerclasses %}
+{% block wrappercontent %}
+{#    TODO Add special styles for page subheaders#}
+    <h6 class="subheader subheader_{{ subheader.linetype }} subheader_{{ subheader.modification }}">
+        {{ subheader.header }}
+    </h6>
+{% endblock %}

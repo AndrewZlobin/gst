@@ -1,19 +1,31 @@
 {% extends 'components/_wrapper.html.twig' %}
-{% set extracontainerclasses = 'node-navbar__banner' %}
+{% set extracontainerclasses = 'navbar-no-banner' %}
 {% block wrappercontent %}
-    <ul class="nav pt-3 align-items-end">
+    <nav class="navbar-no-banner__menu row pt-4">
+        {% set route_name = app.request.attributes.get('_route') %}
         {% for link in navbar.links %}
             {% if link.renderinlogo is defined %}
-                <a class="mr-auto" href="{{ link.href }}">
-                    <img src="{{ absolute_url(asset('build/img/navbar_logo.svg')) }}" alt="{{ link.title }}">
-                </a>
-            {% else %}
-                <li class="nav-item">
-                    <a class="nav-link node-text__link text-white" href="#">{{ link.title|upper }}</a>
-                </li>
+                <div class="col col-md-8 col-lg-6 col-xl-4 mb-3 mb-xl-0">
+                    <a class="navbar-no-banner__logo mr-auto" href="{{ link.href }}">
+                        <img src="{{ absolute_url(asset('build/img/navbar_logo.svg')) }}" alt="{{ link.title }}">
+                    </a>
+                </div>
             {% endif %}
         {% endfor %}
-    </ul>
-    {{ dump(navbar.banner.header) }}
+        <div class="col-6 col-md-8 d-flex align-items-end flex-wrap flex-md-nowrap">
+            {% for link in navbar.links %}
+                {% if link.renderinlogo is not defined %}
+                    {% if link.route is defined %}
+                        {% if link.route == route_name %}
+                            <a class="navbar-no-banner__link nav-link active" href="{{ link.href }}">{{ link.title|upper }}</a>
+                        {% else %}
+                            <a class="navbar-no-banner__link nav-link" href="{{ link.href }}">{{ link.title|upper }}</a>
+                        {% endif %}
+                    {% else %}
+                        <a class="navbar-no-banner__link nav-link" href="{{ link.href }}">{{ link.title|upper }}</a>
+                    {% endif %}
+                {% endif %}
+            {% endfor %}
+        </div>
+    </nav>
 {% endblock %}
-{% dump navbar %}

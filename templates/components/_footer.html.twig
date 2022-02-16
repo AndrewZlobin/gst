@@ -18,7 +18,7 @@
                 {% if link.renderinlogo is not defined %}
                     <div class="d-flex align-items-center">
                         <img class="footer-container__arrow mr-3" src="{{ absolute_url(asset('build/icons/arrow_link_right.svg')) }}" alt="{{ link.title }}">
-                        <a class="footer-container__link" data-footerlink="{{ loop.index }}" href="#">{{ link.title }}</a>
+                        <a class="footer-container__link" data-footerlink="{{ loop.index }}" href="{{ link.href }}">{{ link.title }}</a>
                     </div>
                 {% endif %}
             {% endfor %}

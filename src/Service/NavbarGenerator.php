@@ -8,6 +8,9 @@ use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 
 class NavbarGenerator
 {
+    const IDENTIFIER = 'navbar';
+    const WRAPPER_CLASS = 'navbar-banner';
+
     const LANDING = 'landing';
     const ABOUT_US = 'about_us';
     const MAIN_ACTIVITIES = 'main_activities';
@@ -28,9 +31,15 @@ class NavbarGenerator
         $this->router = $router;
     }
 
+    public function getIdentifier(): string
+    {
+        return self::IDENTIFIER;
+    }
+
     public function getNavbar(): array
     {
         return [
+            'extracontainerclasses' => self::WRAPPER_CLASS,
             'header' => $this->getNavbarHeader(),
             'links' => $this->getTranslatedNavbarLinks()
         ];
@@ -48,22 +57,27 @@ class NavbarGenerator
             ],
             [
                 'title' => $this->translator->trans('navbar.links.aboutus'),
+                'route' => self::ABOUT_US,
                 'href' => $this->router->generate(self::ABOUT_US, [], $referencetype),
             ],
             [
                 'title' => $this->translator->trans('navbar.links.activities'),
+                'route' => self::MAIN_ACTIVITIES,
                 'href' => $this->router->generate(self::MAIN_ACTIVITIES, [], $referencetype),
             ],
             [
                 'title' => $this->translator->trans('navbar.links.projects'),
+                'route' => self::OUR_PROJECTS,
                 'href' => $this->router->generate(self::OUR_PROJECTS, [], $referencetype),
             ],
             [
                 'title' => $this->translator->trans('navbar.links.career'),
+                'route' => self::OUR_TEAM,
                 'href' => $this->router->generate(self::OUR_TEAM, [], $referencetype),
             ],
             [
                 'title' => $this->translator->trans('navbar.links.contacts'),
+                'route' => self::CONTACTS,
                 'href' => $this->router->generate(self::CONTACTS, [], $referencetype),
             ],
         ];

@@ -1,4 +1,7 @@
-$footer-substratum-background-color:  #2C3258;
+$footer-max-height:           481px;
+
+$footer-substratum-background-color:    #2C3258;
+$footer-substratum-background-subcolor: #f7f7f7;
 
 $footer-block-arrow-width:   21px;
 $footer-block-arrow-height:  11px;
@@ -26,6 +29,17 @@ $footer-with-form-map-pin-height:  48px;
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: repeat(2, max-content);
+
+  &__with-content {
+    background-color: unset;
+    background-image: url("/assets/img/cranes_bg.png"),
+    linear-gradient($footer-substratum-background-subcolor, $footer-substratum-background-subcolor calc(100% - #{$footer-max-height}), $footer-substratum-background-color calc(100% - #{$footer-max-height}), $footer-substratum-background-color 100%);
+    background-position: bottom;
+  }
+}
+
+.block-footer {
+  max-height: $footer-max-height;
 }
 
 .footer-container {
@@ -70,7 +84,7 @@ $footer-with-form-map-pin-height:  48px;
     height: $footer-block-arrow-height;
   }
   &__link {
-    @include style-text-node("27px", "33px", $white, $font-weight-regular);
+    @include style-text-node("27px", "32px", $white, $font-weight-regular);
   }
 
   &__blocks {

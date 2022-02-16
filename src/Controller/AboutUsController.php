@@ -2,19 +2,51 @@
 
 namespace App\Controller;
 
+use App\Service\BlocksForAboutUsPage;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Contracts\Translation\TranslatorInterface;
 
 class AboutUsController extends AbstractController
 {
+    const IDENTIFIER = 'about_us';
+    const WRAPPER_CLASS = 'bg-custom-dark';
+
+    private TranslatorInterface $translator;
+
+    public function __construct(TranslatorInterface $translator)
+    {
+        $this->translator = $translator;
+    }
+
     /**
      * @Route("/about_us", name="about_us")
      */
-    public function index(): Response
+    public function index(BlocksForAboutUsPage $blocks): Response
     {
+        $page = self::IDENTIFIER;
+
+        $navbar = $blocks->getNavbar();
+        $subheader = $blocks->getSubheader();
+        $companyreference = $blocks->getCompanyreference();
+        $map = $blocks->getMap();
+        $licensesandcertificates = $blocks->getLicensesandcertificates();
+        $customersandreviews = $blocks->getCustomersandreviews();
+        $customersfeedbacks = $blocks->getCustomersFeedbacks();
+        $footer = $blocks->getFooter();
+
         return $this->render('about_us/index.html.twig', [
-            'controller_name' => 'AboutUsController',
+            'pagetitle' => $this->translator->trans("pages.${page}"),
+            'extracontainerclasses' => self::WRAPPER_CLASS,
+            $navbar->getIdentifier() => $navbar->getNavbar(),
+            $subheader->getIdentifier() => $subheader->getSubHeader($page),
+            $companyreference->getIdentifier() => $companyreference->getReference(),
+            $map->getIdentifier() => $map->getOfficesForMap(),
+            $licensesandcertificates->getIdentifier() => $licensesandcertificates->getLicensesAndCertificates(),
+            $customersandreviews->getIdentifier() => $customersandreviews->getCustomers(),
+            $customersfeedbacks->getIdentifier() => $customersfeedbacks->getFeedbacks(),
+            $footer->getIdentifier() => $footer->getFooter($customersfeedbacks->getFeedbacksData()),
         ]);
     }
 }

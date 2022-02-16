@@ -8,6 +8,7 @@ use Symfony\Contracts\Translation\TranslatorInterface;
 class MapGenerator
 {
     const IDENTIFIER = 'offices';
+    const DEFAULT_WRAPPER_CLASS = 'map-custom-bg';
 
     const SAINT_PETERSBURG = 'spb';
     const MOSCOW = 'moscow';
@@ -25,12 +26,49 @@ class MapGenerator
         self::ANAPA
     ];
 
+    protected string $mapcaption = '';
+    protected bool $usedefaultwrapper = false;
+
     private TranslatorInterface $translator;
 
     public function __construct(TranslatorInterface $translator)
     {
         $this->translator = $translator;
     }
+
+    /**
+     * @return string
+     */
+    public function getMapcaption(): string
+    {
+        return $this->mapcaption;
+    }
+
+    /**
+     * @param string $mapcaption
+     */
+    public function setMapcaption(string $mapcaption): void
+    {
+        $this->mapcaption = $mapcaption;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isUsedefaultwrapper(): bool
+    {
+        return $this->usedefaultwrapper;
+    }
+
+    /**
+     * @param bool $usedefaultwrapper
+     */
+    public function setUsedefaultwrapper(bool $usedefaultwrapper): void
+    {
+        $this->usedefaultwrapper = $usedefaultwrapper;
+    }
+
+
 
     public function getIdentifier(): string
     {
@@ -42,8 +80,16 @@ class MapGenerator
         $translationid = self::IDENTIFIER;
 
         $points = [];
-        $points['header'] = $this->translator->trans("${translationid}.header");
         $points['points'] = $this->getOfficesData();
+        $points['header'] = $this->translator->trans("${translationid}.header");
+
+        if (!empty($this->getMapcaption())) {
+            $points['caption'] = $this->getMapcaption();
+        }
+
+        if ($this->isUsedefaultwrapper()) {
+            $points['extracontainerclasses'] = self::DEFAULT_WRAPPER_CLASS;
+        }
 
         return $points;
     }

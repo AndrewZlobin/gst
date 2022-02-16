@@ -1,0 +1,37 @@
+$subheader-text-align:        justify;
+$subheader-letter-spacing:    -0.025em;
+$subheader-text-transform:    uppercase;
+
+$subheader-underline-border-height:           $spacer / 2;
+$subheader-underline-border-background-color: map-get($theme-colors, "custom-yellow");
+
+.subheader {
+  @include style-text-node("43px", "52px", map-get($theme-colors, "custom-header-dark"), $font-weight-semi-bold);
+  text-align: $subheader-text-align;
+  letter-spacing: $subheader-letter-spacing;
+  text-transform: $subheader-text-transform;
+  width: fit-content;
+  width: -moz-fit-content;
+
+  position: relative;
+
+  &_about_us {
+    margin-bottom: $spacer * 3;
+  }
+
+  &_underline {
+    &:after {
+      content: "";
+      position: absolute;
+      width: 100%;
+      height: $subheader-underline-border-height;
+      background-color: $subheader-underline-border-background-color;
+      left: 0;
+      top: calc(100% + #{$spacer});
+    }
+  }
+
+  &_left {
+
+  }
+}

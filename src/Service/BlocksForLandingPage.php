@@ -8,9 +8,6 @@ use App\Controller\ContactUsController;
 
 class BlocksForLandingPage
 {
-    // TODO Rewrite emails
-    const SEND_COPY_TO = 'example@gmail.com';
-
     private NavbarWithBannerGenerator $navbar;
     private AdvantagesGenerator $advantages;
     private MapGenerator $map;
@@ -83,7 +80,6 @@ class BlocksForLandingPage
     {
         $this->form->setHeader($page);
         $this->form->setCaption($page);
-        $this->form->setCopyto(self::SEND_COPY_TO);
 
         return $this->footerWithFormGenerator;
     }

@@ -4,8 +4,6 @@
 // Rewrite variables
 
 // Buttons
-//
-// For each of Bootstrap's buttons, define text, background, and border color.
 $btn-box-shadow:  4px 7px 20px 6px rgba(0, 0, 0, 0.14) !default;
 
 $container-max-widths: (
@@ -84,8 +82,10 @@ $custom-colors: (
         "custom-dark": #1B0E1B,
         "custom-header-dark": #2D394F,
         "custom-text-dark": #313F57,
+        "custom-gray-color": #F7F7F7,
         "map-card-text": #122C50,
-        "custom-yellow": #E8AB10
+        "custom-yellow": #E8AB10,
+        "navbar-bg-color": #2C3258
 );
 
 // Spacers
