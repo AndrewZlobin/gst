@@ -7,10 +7,14 @@ use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 
 class BlocksForMainActivitiesPage
 {
+    const WRAPPER_CLASS = 'bg-transparent';
+
     const CONSTRUCTION_AND_INSTALLATION = 'construction_and_installation';
     const DESIGN_AND_SURVEY = 'design_and_survey';
     const COMPLEX_SUPPLIES = 'complex_supplies';
     const CONSTRUCTION_EQUIPMENT_RENTAL = 'construction_equipment_rental';
+
+    const VIEW_ACTIVITY_ROUTE_NAME = 'view_activity';
 
     private TranslatorInterface $translator;
     private UrlGeneratorInterface $router;
@@ -46,9 +50,15 @@ class BlocksForMainActivitiesPage
     public function getData(): array
     {
         return [
+            'extracontainerclasses' => self::WRAPPER_CLASS,
             'header' => 'Основные виды деятельности',
             'activities' => $this->getActivities(),
         ];
+    }
+
+    public function getActivityData(string $type): array
+    {
+        return $this->getData()['activities'][$type];
     }
 
     private function getActivities(): array
@@ -97,6 +107,8 @@ class BlocksForMainActivitiesPage
 
     private function getActivityRoute(string $key): string
     {
-        return $this->router->generate($key);
+        return $this->router->generate(self::VIEW_ACTIVITY_ROUTE_NAME, [
+            'type' => $key
+        ]);
     }
 }
