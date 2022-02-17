@@ -7,11 +7,13 @@
 
 {% block title %}{{ pagetitle }}{% endblock %}
 
-{% block content %}{% endblock %}
+{% block content %}
+    {{dump(activitytype)}}
+{% endblock %}
 
 {% block footer %}
     <div class="footer__substratum footer__substratum__with-content">
-        {{  include('components/_activities_list.html.twig') }}
+        {{dump(footer)}}
         {{  include('components/_footer.html.twig') }}
     </div>
 {% endblock %}
