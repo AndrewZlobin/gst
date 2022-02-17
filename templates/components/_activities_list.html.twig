@@ -1,0 +1,17 @@
+{% extends 'components/_wrapper.html.twig' %}
+{% if footer.footercontent.extracontainerclasses is defined %}
+    {% set extracontainerclasses = footer.footercontent.extracontainerclasses %}
+{% endif %}
+{% block wrappercontent %}
+    {% set activitieslist = footer.footercontent %}
+    <h1>{{ activitieslist.header }}</h1>
+    <div class="d-flex flex-column">
+        {% for activity in activitieslist.activities %}
+            <div>
+                <h2>{{ activity.header }}</h2>
+                <div>{{ activity.description }}</div>
+                <a href="{{ activity.route }}">Подробнее</a>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}
