@@ -29,10 +29,13 @@ class BaseMainActivityGenerator
 
     /**
      * @param string $type
+     * @return BaseMainActivityGenerator
      */
-    protected function setType(string $type): void
+    protected function setType(string $type): BaseMainActivityGenerator
     {
         $this->type = $type;
+
+        return $this;
     }
 
     /**
@@ -45,6 +48,7 @@ class BaseMainActivityGenerator
 
     /**
      * @param string $header
+     * @return BaseMainActivityGenerator
      */
     public function setHeader(string $header): BaseMainActivityGenerator
     {
@@ -63,6 +67,7 @@ class BaseMainActivityGenerator
 
     /**
      * @param string $description
+     * @return BaseMainActivityGenerator
      */
     public function setDescription(string $description): BaseMainActivityGenerator
     {
@@ -91,6 +96,7 @@ class BaseMainActivityGenerator
 
     /**
      * @param array $data
+     * @return BaseMainActivityGenerator
      */
     public function setData(array $data): BaseMainActivityGenerator
     {
