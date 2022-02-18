@@ -13,7 +13,7 @@ class BlocksForMainActivitiesPage
     private UrlGeneratorInterface $router;
 
     private NavbarGenerator $navbar;
-    private FooterWithBlockGenerator $footerwithblockgenerator;
+    private FooterWithBlockGenerator $footer;
 
     public function __construct(TranslatorInterface      $translator,
                                 UrlGeneratorInterface    $router,
@@ -24,7 +24,7 @@ class BlocksForMainActivitiesPage
         $this->translator = $translator;
         $this->router = $router;
         $this->navbar = $navbar;
-        $this->footerwithblockgenerator = $footerwithblockgenerator;
+        $this->footer = $footerwithblockgenerator;
     }
 
     /**
@@ -37,7 +37,7 @@ class BlocksForMainActivitiesPage
 
     public function getFooter(): FooterWithBlockGenerator
     {
-        return $this->footerwithblockgenerator;
+        return $this->footer;
     }
 
     public function getData(): array

@@ -30,7 +30,7 @@ class BaseMainActivityGenerator
     /**
      * @param string $type
      */
-    protected function setType(string $type)
+    protected function setType(string $type): void
     {
         $this->type = $type;
     }
