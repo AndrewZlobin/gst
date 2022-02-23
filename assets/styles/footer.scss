@@ -39,7 +39,13 @@ $footer-with-form-map-pin-height:  48px;
 }
 
 .block-footer {
-  max-height: $footer-max-height;
+  &__with-form {
+
+  }
+
+  &__with-content {
+    max-height: $footer-max-height;
+  }
 }
 
 .footer-container {

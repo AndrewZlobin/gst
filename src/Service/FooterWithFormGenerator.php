@@ -10,7 +10,7 @@ class FooterWithFormGenerator
 {
     const IDENTIFIER = 'footer';
     const FORM_IDENTIFIER = 'form';
-    const WRAPPER_CLASS = 'bg-transparent block-footer';
+    const WRAPPER_CLASS = 'bg-transparent block-footer block-footer__with-form';
 
     const SEPARATOR = ', ';
 

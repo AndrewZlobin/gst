@@ -8,7 +8,7 @@ use Symfony\Contracts\Translation\TranslatorInterface;
 class FooterWithBlockGenerator
 {
     const IDENTIFIER = 'footer';
-    const WRAPPER_CLASS = 'bg-transparent block-footer';
+    const WRAPPER_CLASS = 'bg-transparent block-footer block-footer__with-content';
 
     const CAPTION = 'address';
     const BLOCK_HAS_CAPTION = 'city';
