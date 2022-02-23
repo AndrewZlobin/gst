@@ -187,6 +187,9 @@ form:
   landing:
     header: По вопросам сотрудничества
     caption: Если у Вас есть вопросы по сотрудничеству, напишите нам.
+  complex_supplies_activity:
+    header: Заказать расчет поставки
+    caption: Команда специалистов ООО “Газстройтех” с радостью ответит на Ваши вопросы
 
 # Main activities
 construction_and_installations:
