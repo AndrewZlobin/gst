@@ -8,13 +8,13 @@
 {% block title %}{{ pagetitle }}{% endblock %}
 
 {% block content %}
-    {{dump(activitytype)}}
 {% endblock %}
 
 {% block footer %}
+    {% set templatename = footer.footercontent.type %}
     <div class="footer__substratum footer__substratum__with-content">
-        {{dump(footer)}}
-        {{  include('components/_footer.html.twig') }}
+        {{ include('main_activities/' ~ templatename ~ '.html.twig') }}
+        {{ include('components/_footer.html.twig') }}
     </div>
 {% endblock %}
 

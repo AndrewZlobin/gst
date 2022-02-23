@@ -40,19 +40,19 @@ class MainActivitiesController extends AbstractController
     }
 
     /**
-     * @Route("/activities/{type}", name="view_activity")
+     * @Route("/activities/{id}", name="view_activity")
      */
-    public function view(string $type, BlocksForMainActivitiesPage $blocks): Response
+    public function view(int $id, BlocksForMainActivitiesPage $blocks): Response
     {
         $navbar = $blocks->getNavbar();
         $footer = $blocks->getFooter();
+        $activity = $blocks->getActivityData($id);
 
         return $this->render('main_activities/view.html.twig', [
             'pagetitle' => 'construction_and_installation',
             'extracontainerclasses' => self::WRAPPER_CLASS,
-            'activitytype' => $type,
             $navbar->getIdentifier() => $navbar->getNavbar(),
-            $footer->getIdentifier() => $footer->getFooter($blocks->getActivityData($type))
+            $footer->getIdentifier() => $footer->getFooter($activity)
         ]);
     }
 }

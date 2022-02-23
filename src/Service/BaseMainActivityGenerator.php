@@ -6,17 +6,38 @@ use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 
 class BaseMainActivityGenerator
 {
-    protected string $type;
-    protected array $data = [];
+    protected int $id;
 
+    private string $type;
     private string $header;
     private string $description;
+
+    protected array $data = [];
 
     private UrlGeneratorInterface $router;
 
     public function __construct(UrlGeneratorInterface $router)
     {
         $this->router = $router;
+    }
+
+    /**
+     * @return int
+     */
+    public function getId(): int
+    {
+        return $this->id;
+    }
+
+    /**
+     * @param int $id
+     * @return BaseMainActivityGenerator
+     */
+    protected function setId(int $id): BaseMainActivityGenerator
+    {
+        $this->id = $id;
+
+        return $this;
     }
 
     /**
@@ -31,7 +52,7 @@ class BaseMainActivityGenerator
      * @param string $type
      * @return BaseMainActivityGenerator
      */
-    protected function setType(string $type): BaseMainActivityGenerator
+    public function setType(string $type): BaseMainActivityGenerator
     {
         $this->type = $type;
 
@@ -82,7 +103,7 @@ class BaseMainActivityGenerator
     public function getRoute(): string
     {
         return $this->router->generate('view_activity', [
-            'type' => $this->getType(),
+            'id' => $this->getId()
         ]);
     }
 
@@ -105,24 +126,14 @@ class BaseMainActivityGenerator
         return $this;
     }
 
-    public function generateInfo(): array
+    public function generate(): array
     {
         return [
-            $this->getType() => [
-                'header' => $this->getHeader(),
-                'description' => $this->getDescription(),
-                'route' => $this->getRoute(),
-            ]
-        ];
-    }
-
-    public function generateData(): array
-    {
-        return [
-            $this->getType() => [
-                'header' => $this->getHeader(),
-                'data' => $this->getData()
-            ]
+            'type' => $this->getType(),
+            'header' => $this->getHeader(),
+            'description' => $this->getDescription(),
+            'route' => $this->getRoute(),
+            'data' => $this->getData()
         ];
     }
 }

@@ -49,70 +49,46 @@ class BlocksForMainActivitiesPage
         ];
     }
 
-    public function getActivityData(string $type): array
+    public function getActivityData(int $id): array
     {
-        switch (true) {
-            case $this->constructionAndInstallationActivity()->getType() === $type:
-                return $this->constructionAndInstallationActivity()->generateData();
-            case $this->designAndSurveyActivity()->getType() === $type:
-                return $this->designAndSurveyActivity()->generateData();
-            case $this->complexSuppliesActivity()->getType() === $type:
-                return $this->complexSuppliesActivity()->generateData();
-            case $this->constructionEquipmentRentalActivity()->getType() === $type:
-                return $this->constructionEquipmentRentalActivity()->generateData();
-            default:
-                // In case of error
-                return [];
-        }
+        $activities = $this->getActivityEntities();
+
+        return $activities[$id];
     }
 
     private function getActivities(): array
     {
-        return array_merge(
-            $this->constructionAndInstallationActivity()->generateInfo(),
-            $this->designAndSurveyActivity()->generateInfo(),
-            $this->complexSuppliesActivity()->generateInfo(),
-            $this->constructionEquipmentRentalActivity()->generateInfo(),
-        );
+        return array_values($this->getActivityEntities());
     }
 
-    private function constructionAndInstallationActivity(): ConstructionAndInstallationGenerator
+    /**
+     * Imitate query to database
+     *
+     * @return array
+     */
+    private function getActivityEntities(): array
     {
-        $activity = new ConstructionAndInstallationGenerator($this->router);
-
-        return $activity
+        $constructionsAndInstallations = (new ConstructionAndInstallationGenerator($this->router))
             ->setHeader('Строительно-монтажные работы')
-            ->setDescription('Весь спектр услуг от строительства «с нуля» и капитального ремонта зданий и сооружений «под ключ» до диагностического обслуживания и устранения неполадок в работе систем.')
-            ->setData(['data' => 'data']);
-    }
+            ->setDescription('Весь спектр услуг от строительства «с нуля» и капитального ремонта зданий и сооружений «под ключ» до диагностического обслуживания и устранения неполадок в работе систем.');
 
-    private function designAndSurveyActivity(): DesignAndSurveyGenerator
-    {
-        $activity = new DesignAndSurveyGenerator($this->router);
-
-        return $activity
+        $designAndSurvey = (new DesignAndSurveyGenerator($this->router))
             ->setHeader('Проектно-изыскательные работы')
-            ->setDescription('Весь комплекс работ по проведению инженерных изысканий, разработке технико-экономических обоснований строительства, подготовке проектов и документации.')
-            ->setData(['data' => 'data']);
-    }
+            ->setDescription('Весь комплекс работ по проведению инженерных изысканий, разработке технико-экономических обоснований строительства, подготовке проектов и документации.');
 
-    private function complexSuppliesActivity(): ComplexSuppliesGenerator
-    {
-        $activity = new ComplexSuppliesGenerator($this->router);
-
-        return $activity
+        $complexSupplies = (new ComplexSuppliesGenerator($this->router))
             ->setHeader('Комплексные поставки материально-технических ресурсов')
-            ->setDescription('Широкий ассортимент материалов и оборудования для возведения промышленного объекта — от металлопроката до кабельной продукции и отделочных материалов.')
-            ->setData(['data' => 'data']);
-    }
+            ->setDescription('Широкий ассортимент материалов и оборудования для возведения промышленного объекта — от металлопроката до кабельной продукции и отделочных материалов.');
 
-    private function constructionEquipmentRentalActivity(): ConstructionEquipmentRentalGenerator
-    {
-        $activity = new ConstructionEquipmentRentalGenerator($this->router);
-
-        return $activity
+        $constructionEquipmentRental = (new ConstructionEquipmentRentalGenerator($this->router))
             ->setHeader('Аренда строительной техники')
-            ->setDescription('Собственный парк строительной техники, автотранспорта, специализированное оборудование для сварочных работ и доставка арендованной техники заказчику в любой регион оптимальным путем.')
-            ->setData(['data' => 'data']);
+            ->setDescription('Собственный парк строительной техники, автотранспорта, специализированное оборудование для сварочных работ и доставка арендованной техники заказчику в любой регион оптимальным путем.');
+
+        return [
+            $constructionsAndInstallations->getId() => $constructionsAndInstallations->generate(),
+            $designAndSurvey->getId() => $designAndSurvey->generate(),
+            $complexSupplies->getId() => $complexSupplies->generate(),
+            $constructionEquipmentRental->getId() => $constructionEquipmentRental->generate()
+        ];
     }
 }
