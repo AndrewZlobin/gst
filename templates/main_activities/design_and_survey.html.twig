@@ -4,6 +4,9 @@
 {% endif %}
 {% block wrappercontent %}
     {% set header, data = footer.footercontent.header, footer.footercontent.data %}
-    {{ dump(header) }}
+    <h1>{{header}}</h1>
+    <h2>{% trans %}design_and_survey.our_customers{% endtrans %}</h2>
+    <h6>{% trans %}design_and_survey.range_of_services{% endtrans %}</h6>
+    <h6>{% trans %}design_and_survey.our_specialists{% endtrans %}</h6>
     {{ dump(data) }}
 {% endblock %}

@@ -129,6 +129,7 @@ class BaseMainActivityGenerator
     public function generate(): array
     {
         return [
+            'extracontainerclasses' => BlocksForMainActivitiesPage::WRAPPER_CLASS,
             'type' => $this->getType(),
             'header' => $this->getHeader(),
             'description' => $this->getDescription(),

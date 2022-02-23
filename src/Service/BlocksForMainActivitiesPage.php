@@ -69,20 +69,20 @@ class BlocksForMainActivitiesPage
     private function getActivityEntities(): array
     {
         $constructionsAndInstallations = (new ConstructionAndInstallationGenerator($this->router))
-            ->setHeader('Строительно-монтажные работы')
-            ->setDescription('Весь спектр услуг от строительства «с нуля» и капитального ремонта зданий и сооружений «под ключ» до диагностического обслуживания и устранения неполадок в работе систем.');
+            ->setHeader($this->translator->trans('construction_and_installations.header'))
+            ->setDescription($this->translator->trans('construction_and_installations.description'));
 
         $designAndSurvey = (new DesignAndSurveyGenerator($this->router))
-            ->setHeader('Проектно-изыскательные работы')
-            ->setDescription('Весь комплекс работ по проведению инженерных изысканий, разработке технико-экономических обоснований строительства, подготовке проектов и документации.');
+            ->setHeader($this->translator->trans('design_and_survey.header'))
+            ->setDescription($this->translator->trans('design_and_survey.description'));
 
         $complexSupplies = (new ComplexSuppliesGenerator($this->router))
-            ->setHeader('Комплексные поставки материально-технических ресурсов')
-            ->setDescription('Широкий ассортимент материалов и оборудования для возведения промышленного объекта — от металлопроката до кабельной продукции и отделочных материалов.');
+            ->setHeader($this->translator->trans('complex_supplies.header'))
+            ->setDescription($this->translator->trans('complex_supplies.description'));
 
         $constructionEquipmentRental = (new ConstructionEquipmentRentalGenerator($this->router))
-            ->setHeader('Аренда строительной техники')
-            ->setDescription('Собственный парк строительной техники, автотранспорта, специализированное оборудование для сварочных работ и доставка арендованной техники заказчику в любой регион оптимальным путем.');
+            ->setHeader($this->translator->trans('construction_equipment_rental.header'))
+            ->setDescription($this->translator->trans('construction_equipment_rental.description'));
 
         return [
             $constructionsAndInstallations->getId() => $constructionsAndInstallations->generate(),

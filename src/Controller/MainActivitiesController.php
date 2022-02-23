@@ -46,13 +46,12 @@ class MainActivitiesController extends AbstractController
     {
         $navbar = $blocks->getNavbar();
         $footer = $blocks->getFooter();
-        $activity = $blocks->getActivityData($id);
 
         return $this->render('main_activities/view.html.twig', [
             'pagetitle' => 'construction_and_installation',
             'extracontainerclasses' => self::WRAPPER_CLASS,
             $navbar->getIdentifier() => $navbar->getNavbar(),
-            $footer->getIdentifier() => $footer->getFooter($activity)
+            $footer->getIdentifier() => $footer->getFooter($blocks->getActivityData($id))
         ]);
     }
 }
