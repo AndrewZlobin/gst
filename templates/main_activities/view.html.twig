@@ -12,7 +12,7 @@
 
 {% block footer %}
     {% set templatename = footer.footercontent.type %}
-    <div class="footer__substratum footer__substratum__with-content">
+    <div class="footer__substratum footer__substratum__with-content pt-11">
         {{ include('main_activities/' ~ templatename ~ '.html.twig') }}
         {{ include('components/_footer.html.twig') }}
     </div>

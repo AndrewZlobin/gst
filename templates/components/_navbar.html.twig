@@ -1,7 +1,7 @@
 {% extends 'components/_wrapper.html.twig' %}
 {% set extracontainerclasses = 'navbar-no-banner' %}
 {% block wrappercontent %}
-    <nav class="navbar-no-banner__menu row pt-4">
+    <nav class="navbar-no-banner__menu row pt-4 mb-0">
         {% set route_name = app.request.attributes.get('_route') %}
         {% for link in navbar.links %}
             {% if link.renderinlogo is defined %}
