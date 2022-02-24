@@ -76,6 +76,7 @@
 
   &__description {
     @include style-text-node("17px", "24px", "#122c50", $font-weight-light);
+    padding: 25px 0 42px;
   }
 
   &__link {
