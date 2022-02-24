@@ -23,6 +23,14 @@ Encore
         to: 'img/[name].[ext]'
     })
     .copyFiles({
+        from: './assets/img/constructionandinstallation',
+        to: 'img/constructionandinstallation/[name].[ext]'
+    })
+    .copyFiles({
+        from: './assets/img/designandsurvey',
+        to: 'img/designandsurvey/[name].[ext]'
+    })
+    .copyFiles({
         from: './assets/libs',
         to: 'libs/[name].[ext]'
     })

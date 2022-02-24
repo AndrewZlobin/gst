@@ -4,9 +4,16 @@
 {% endif %}
 {% block wrappercontent %}
     {% set header, data = footer.footercontent.header, footer.footercontent.data %}
-    <h1>{{header}}</h1>
+    <h1 class="activities-header activities-header--line-left activities-header--md">{{header}}</h1>
     <h2>{% trans %}construction_and_installations.main_line_of_business.title{% endtrans %}</h2>
+    <ul>
+        {% for workType in data.workTypes %}
+            <li>{{ workType }}</li>
+        {% endfor %}
+    </ul>
     <h6>{% trans %}construction_and_installations.main_line_of_business.message{% endtrans %}</h6>
     <h6>{% trans %}construction_and_installations.construction_and_modernization_of_industrial_structure{% endtrans %}</h6>
-    {{ dump(data) }}
+    {% for image in data.images %}
+        <img style="max-width: 300px;" src="{{ absolute_url(asset('build/img/constructionandinstallation/' ~ image.name ~ '.' ~ image.extension)) }}">
+    {% endfor %}
 {% endblock %}
