@@ -5,3 +5,80 @@
 @import "./assets/styles/footer";
 
 // Styles for `Main Activities` page
+
+.activities-header {
+  text-align: justify;
+  letter-spacing: 0.085em;
+  @include style-text-node("21px", "28px", map-get($custom-colors, "custom-header-dark"), $font-weight-semi-bold);
+
+  @include media-breakpoint-up(sm) {
+    font-size: 30px;
+    line-height: 37px;
+  }
+
+  &--md,
+  &--lg {
+    letter-spacing: -0.025em;
+  }
+
+  &--md {
+    max-width: 530px;
+    @include style-text-node("29px", "37px", map-get($custom-colors, "custom-header-dark"), $font-weight-semi-bold);
+
+    @include media-breakpoint-up(sm) {
+      font-size: 38px;
+      line-height: 46px;
+    }
+  }
+  &--lg {
+    max-width: 434px;
+    @include style-text-node("34px", "43px", map-get($custom-colors, "custom-header-dark"), $font-weight-semi-bold);
+
+    @include media-breakpoint-up(sm) {
+      font-size: 43px;
+      line-height: 52px;
+    }
+  }
+
+  &--line-left {
+    padding-left: 20px;
+    border-left: 9px solid map-get($custom-colors, "custom-yellow");
+  }
+  &--line-bottom {
+    padding-bottom: 25px;
+    border-bottom: 3px solid map-get($custom-colors, "custom-yellow");
+  }
+
+  &--line-bottom-lg {
+    padding-bottom: 16px;
+    border-bottom: 8px solid map-get($custom-colors, "custom-yellow");
+  }
+}
+
+.activities-list {
+  margin-bottom: 138px;
+
+  display: grid;
+  gap: 71px 192px;
+  grid-template-columns: auto;
+
+  @include media-breakpoint-up(sm) {
+    grid-template-columns: 1fr;
+  }
+
+  @include media-breakpoint-up(lg) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include media-breakpoint-up(xl) {
+    grid-template-columns: repeat(auto-fit, minmax(471px, 1fr));
+  }
+
+  &__description {
+    @include style-text-node("17px", "24px", "#122c50", $font-weight-light);
+  }
+
+  &__link {
+    @include style-text-node("19px", "23px", map-get($custom-colors, "custom-yellow"), $font-weight-semi-bold);
+  }
+}

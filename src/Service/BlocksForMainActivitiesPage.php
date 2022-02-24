@@ -44,7 +44,6 @@ class BlocksForMainActivitiesPage
     {
         return [
             'extracontainerclasses' => self::WRAPPER_CLASS,
-            'header' => 'Основные виды деятельности',
             'activities' => $this->getActivities(),
         ];
     }

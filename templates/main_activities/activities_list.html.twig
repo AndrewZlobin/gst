@@ -4,13 +4,13 @@
 {% endif %}
 {% block wrappercontent %}
     {% set activitieslist = footer.footercontent %}
-    <h1>{{ activitieslist.header }}</h1>
-    <div class="d-flex flex-column">
+    <h1 class="text-uppercase activities-header activities-header--lg activities-header--line-bottom-lg">{% trans %}main_activities.header{% endtrans %}</h1>
+    <div class="activities-list">
         {% for activity in activitieslist.activities %}
             <div>
-                <h2>{{ activity.header }}</h2>
-                <div>{{ activity.description }}</div>
-                <a href="{{ activity.route }}">Подробнее</a>
+                <h2 class="activities-header activities-header--line-bottom">{{ activity.header }}</h2>
+                <div class="activities-list__description text-justify">{{ activity.description }}</div>
+                <a class="activities-list__link text-justify" href="{{ activity.route }}">{% trans %}main_activities.more{% endtrans %}</a>
             </div>
         {% endfor %}
     </div>
