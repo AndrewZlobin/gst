@@ -85,3 +85,85 @@
 }
 
 // templates/main_activities/construction_and_installations.html.twig
+.cai {
+  display: grid;
+  gap: 15px 20px;
+  grid-template-areas:
+          "maintitle"
+          "images"
+          "worktypes"
+          "info";
+  grid-template-columns: 1fr;
+
+  @include media-breakpoint-up(md) {
+    grid-template-areas:
+          "maintitle wideimage wideimage"
+          "worktypes images images"
+          "worktypes info info";
+    grid-template-columns: 1fr 1.05fr;
+    grid-template-rows: minmax(402px, auto) minmax(433px, auto) auto;
+  }
+}
+
+.cai__main-title-block {
+  grid-area: maintitle;
+}
+
+.cai__main-title {
+  @include  style-text-node("22px", "35px", $white, $font-weight-light);
+  letter-spacing: -0.045em;
+
+  background: $custom-yellow-button-background;
+  box-shadow: $custom-block-box-shadow;
+
+  padding: 25px 20px;
+}
+
+.cai__images {
+  grid-area: images;
+  display: flex;
+  gap: 14px;
+}
+
+.cai__image {
+  max-width: 293px;
+
+  &--wide {
+    grid-area: wideimage;
+    max-width: 600px;
+  }
+}
+
+.cai__work-types {
+  grid-area: worktypes;
+
+  padding: 43px 0;
+}
+
+.cai__work-types-title {
+  @include style-text-node("31px", "38px", map-get($custom-colors, "custom-header-dark"), $font-weight-semi-bold);
+  text-align: justify;
+  letter-spacing: -0.025em;
+}
+
+.cai__work-types-list {
+  padding: 0;
+  margin-left: -#{$spacer};
+}
+
+.cai__work-type {
+  @include style-text-node("24px", "38px", map-get($custom-colors, "custom-header-dark"), $font-weight-regular);
+  letter-spacing: 0.005em;
+  list-style: none;
+  background: url("/assets/icons/activities-list-marker.svg") no-repeat left $spacer;
+  padding-left: $spacer;
+  margin-bottom: $spacer;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.cai__title-on-image {
+  grid-area: info;
+}

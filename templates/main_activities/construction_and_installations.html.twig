@@ -5,15 +5,28 @@
 {% block wrappercontent %}
     {% set header, data = footer.footercontent.header, footer.footercontent.data %}
     <h1 class="activities-header activities-header--line-left activities-header--md">{{header}}</h1>
-    <h2>{% trans %}construction_and_installations.main_line_of_business.title{% endtrans %}</h2>
-    <ul>
-        {% for workType in data.workTypes %}
-            <li>{{ workType }}</li>
+    <div class="cai">
+        <div class="cai__main-title-block">
+            <p class="cai__main-title m-0">{% trans %}construction_and_installations.main_line_of_business.message{% endtrans %}</p>
+        </div>
+        {% for image in data.images[:1] %}
+            <img class="cai__image cai__image--wide"
+                 src="{{ absolute_url(asset('build/img/constructionandinstallation/' ~ image.name ~ '.' ~ image.extension)) }}">
         {% endfor %}
-    </ul>
-    <h6>{% trans %}construction_and_installations.main_line_of_business.message{% endtrans %}</h6>
-    <h6>{% trans %}construction_and_installations.construction_and_modernization_of_industrial_structure{% endtrans %}</h6>
-    {% for image in data.images %}
-        <img style="max-width: 300px;" src="{{ absolute_url(asset('build/img/constructionandinstallation/' ~ image.name ~ '.' ~ image.extension)) }}">
-    {% endfor %}
+        <div class="cai__images">
+            {% for image in data.images[1:] %}
+                <img class="cai__image"
+                     src="{{ absolute_url(asset('build/img/constructionandinstallation/' ~ image.name ~ '.' ~ image.extension)) }}">
+            {% endfor %}
+        </div>
+        <div class="cai__work-types">
+            <h2 class="cai__work-types-title mb-4">{% trans %}construction_and_installations.main_line_of_business.title{% endtrans %}</h2>
+            <ul class="cai__work-types-list">
+                {% for workType in data.workTypes %}
+                    <li class="cai__work-type">{{ workType }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+        <h6 class="cai__title-on-image">{% trans %}construction_and_installations.construction_and_modernization_of_industrial_structure{% endtrans %}</h6>
+    </div>
 {% endblock %}
